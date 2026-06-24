@@ -19,6 +19,7 @@ export * from './components/atoms/Typography';
 export * from './components/atoms/Input';
 export * from './components/atoms/Badge';
 export * from './components/atoms/Divider';
+export * from './components/atoms/Spinner';
 
 // Molecules
 // export * from './components/molecules/Card';

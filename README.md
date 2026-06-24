@@ -95,6 +95,7 @@ const RedText = styled.p`
 | Badge      | ✅     | `default` · `primary` · `outline` · `ghost` — dot indicator — sizes `sm` · `md` |
 | Divider    | ✅     | `default` · `strong` · `accent` — horizontal/vertical — optional label |
 | Card       | 🔜     | — |
+| Spinner    | ✅     | sizes `sm` · `md` · `lg` · `xl` — variants `default` · `inverse` |
 | Modal      | 🔜     | — |
 | Navigation | 🔜     | — |
 
