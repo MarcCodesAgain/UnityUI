@@ -72,11 +72,13 @@ const highlightStyles = css`
     content: '';
     position: absolute;
     left: 0;
-    bottom: -4px;
-    height: 3px;
+    bottom: 0.05em;
+    height: 0.35em;
     width: 0%;
     background-color: ${colors.primary};
+    opacity: 0.25;
     transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
   }
 
   &:hover::after {
