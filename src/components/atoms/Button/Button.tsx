@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 import { colors, spacing, fontSize, fontWeight, fontFamily, letterSpacing, borderRadius, borderWidth } from '../../../tokens';
+import { Spinner } from '../Spinner';
+import type { SpinnerSize, SpinnerVariant } from '../Spinner';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -11,6 +13,20 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   loading?: boolean;
   children: React.ReactNode;
 }
+
+// Button size → Spinner size
+const spinnerSizeMap: Record<ButtonSize, SpinnerSize> = {
+  sm: 'sm',
+  md: 'sm',
+  lg: 'md',
+};
+
+// Button variant → Spinner variant (primary has white arc on dark bg)
+const spinnerVariantMap: Record<ButtonVariant, SpinnerVariant> = {
+  primary:   'inverse',
+  secondary: 'default',
+  ghost:     'default',
+};
 
 // ─── Size styles ─────────────────────────────────────────────────────────────
 
@@ -33,12 +49,6 @@ const sizeStyles = {
 };
 
 // ─── Variant styles ───────────────────────────────────────────────────────────
-//
-// Hover micro-interaction: block reveal — a fill rises bottom→top via ::before
-//
-// primary:   black bg  → Electric Blue fill, text stays white
-// secondary: outline   → black fill rises, text flips white via mix-blend-mode
-// ghost:     empty     → grey100 fill rises, text stays black
 
 const variantStyles = {
   primary: css`
@@ -62,9 +72,6 @@ const variantStyles = {
 
     &::before { background-color: ${colors.black}; }
 
-    /* Text flips to white at exactly the halfway point of the fill (110ms).
-     * transition-timing-function: steps(1) = instant flip, no fade.
-     * On mouse-out the fill retreats and text flips back at the same midpoint. */
     & > span {
       transition: color 0ms steps(1) 110ms;
     }
@@ -127,10 +134,6 @@ const StyledButton = styled.button<{
     border-color 180ms ease,
     transform 80ms ease;
 
-  /* ── Block reveal ────────────────────────────────────────────────────────
-   * ::before anchors to the bottom and expands upward on hover.
-   * z-index 0 keeps it behind the Label (z-index 1).
-   */
   &::before {
     content: '';
     position: absolute;
@@ -146,23 +149,16 @@ const StyledButton = styled.button<{
     height: 100%;
   }
 
-  /* Size */
   ${({ $size }) => sizeStyles[$size]}
-
-  /* Variant */
   ${({ $variant }) => variantStyles[$variant]}
-
-  /* Full width */
   ${({ $fullWidth }) => $fullWidth && css`width: 100%;`}
 
-  /* Disabled — no animation */
   &:disabled {
     cursor: not-allowed;
     opacity: 0.4;
     &::before { display: none; }
   }
 
-  /* Loading */
   ${({ $loading }) =>
     $loading &&
     css`
@@ -188,21 +184,6 @@ const Label = styled.span`
   gap: inherit;
 `;
 
-// Spinner
-
-const Spinner = styled.span`
-  width: 1em;
-  height: 1em;
-  border: 2px solid currentColor;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 600ms linear infinite;
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-`;
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function Button({
@@ -225,7 +206,13 @@ export function Button({
       {...props}
     >
       <Label>
-        {loading && <Spinner aria-hidden="true" />}
+        {loading && (
+          <Spinner
+            size={spinnerSizeMap[size]}
+            variant={spinnerVariantMap[variant]}
+            label="Loading"
+          />
+        )}
         {children}
       </Label>
     </StyledButton>

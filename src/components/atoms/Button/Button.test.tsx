@@ -42,9 +42,8 @@ describe('Button', () => {
 
   it('renders spinner when loading', () => {
     renderButton(<Button loading>Click</Button>);
-    // spinner is aria-hidden, query via container
-    const spinner = document.querySelector('[aria-hidden="true"]');
-    expect(spinner).toBeInTheDocument();
+    // Spinner atom uses role="status"
+    expect(screen.getByRole('status', { name: 'Loading' })).toBeInTheDocument();
   });
 
   it.each(['primary', 'secondary', 'ghost'] as const)(
