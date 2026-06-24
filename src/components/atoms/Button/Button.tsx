@@ -62,10 +62,15 @@ const variantStyles = {
 
     &::before { background-color: ${colors.black}; }
 
-    /* mix-blend-mode trick: text over black fill reads as white */
+    /* Text flips to white at exactly the halfway point of the fill (110ms).
+     * transition-timing-function: steps(1) = instant flip, no fade.
+     * On mouse-out the fill retreats and text flips back at the same midpoint. */
     & > span {
-      mix-blend-mode: difference;
-      color: ${colors.black};
+      transition: color 0ms steps(1) 110ms;
+    }
+
+    &:hover:not(:disabled) > span {
+      color: ${colors.white};
     }
 
     &:active:not(:disabled) {
