@@ -129,6 +129,28 @@ export const Colors: Story = {
   ),
 };
 
+// ─── Heading highlight ────────────────────────────────────────────────────────
+
+export const HeadingHighlight: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', padding: '8px 8px 24px' }}>
+      <Typography variant="overline" color="secondary">Hover over the headings</Typography>
+      <Typography variant="display">The grid is the law</Typography>
+      <Typography variant="h1">Swiss International Style</Typography>
+      <Typography variant="h2">Two typefaces. One grid.</Typography>
+      <Typography variant="h3">Zero compromise.</Typography>
+      <Typography variant="h4">Precision by design</Typography>
+      <div style={{ marginTop: '8px', borderTop: '1px solid #DEDEDE', paddingTop: '24px' }}>
+        <Typography variant="overline" color="secondary" style={{ marginBottom: '12px' }}>
+          noHighlight — opt out
+        </Typography>
+        <br /><br />
+        <Typography variant="h2" noHighlight>This heading has no sweep</Typography>
+      </div>
+    </div>
+  ),
+};
+
 // ─── Truncation ───────────────────────────────────────────────────────────────
 
 export const Truncation: Story = {

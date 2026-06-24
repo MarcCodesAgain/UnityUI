@@ -62,4 +62,14 @@ describe('Typography', () => {
     const el = screen.getByText('Long text');
     expect(el).toBeInTheDocument();
   });
+
+  it('heading variants render without crashing with highlight', () => {
+    wrap(<Typography variant="h1">Title</Typography>);
+    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
+  });
+
+  it('noHighlight prop disables the sweep on headings', () => {
+    wrap(<Typography variant="h1" noHighlight>Title</Typography>);
+    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
+  });
 });

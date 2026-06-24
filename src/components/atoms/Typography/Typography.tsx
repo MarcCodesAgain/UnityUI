@@ -12,20 +12,24 @@ export type TypographyColor =
   | 'inverse'
   | 'accent';
 
-// Maps variant → semantic HTML element
+// Variants that get the blue sweep highlight on hover
+const HIGHLIGHT_VARIANTS = new Set<TypographyVariant>([
+  'display', 'h1', 'h2', 'h3', 'h4',
+]);
+
 const defaultElement: Record<TypographyVariant, React.ElementType> = {
-  display: 'h1',
-  h1:      'h1',
-  h2:      'h2',
-  h3:      'h3',
-  h4:      'h4',
-  h5:      'h5',
-  h6:      'h6',
-  bodyLg:  'p',
-  body:    'p',
-  bodySm:  'p',
-  label:   'span',
-  caption: 'span',
+  display:  'h1',
+  h1:       'h1',
+  h2:       'h2',
+  h3:       'h3',
+  h4:       'h4',
+  h5:       'h5',
+  h6:       'h6',
+  bodyLg:   'p',
+  body:     'p',
+  bodySm:   'p',
+  label:    'span',
+  caption:  'span',
   overline: 'span',
 };
 
@@ -46,9 +50,39 @@ export interface TypographyProps {
   truncate?: boolean;
   /** Max number of lines before clamping (requires truncate) */
   lines?: number;
+  /** Disable the blue sweep highlight on headings */
+  noHighlight?: boolean;
   className?: string;
   children: React.ReactNode;
 }
+
+// ─── Highlight sweep ──────────────────────────────────────────────────────────
+//
+// A 3px Electric Blue bar anchored to the bottom of the heading.
+// On hover it sweeps left → right (width 0% → 100%) in 320ms.
+// Uses cubic-bezier(0.4, 0, 0.2, 1) — same easing as the Button block reveal
+// so both animations feel like they belong to the same system.
+
+const highlightStyles = css`
+  position: relative;
+  display: inline-block; /* shrink-wrap to text width */
+  cursor: default;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 3px;
+    width: 0%;
+    background-color: ${colors.primary};
+    transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+`;
 
 // ─── Styled component ─────────────────────────────────────────────────────────
 
@@ -57,8 +91,8 @@ const StyledText = styled.span<{
   $color: TypographyColor;
   $truncate: boolean;
   $lines: number;
+  $highlight: boolean;
 }>`
-  /* Apply the pre-composed text style from tokens */
   ${({ $variant }) => {
     const s = textStyles[$variant];
     return css`
@@ -72,6 +106,9 @@ const StyledText = styled.span<{
   }}
 
   color: ${({ $color }) => colorMap[$color]};
+
+  /* Blue sweep on hover — only for heading variants */
+  ${({ $highlight }) => $highlight && highlightStyles}
 
   /* Truncation */
   ${({ $truncate, $lines }) =>
@@ -99,10 +136,12 @@ export function Typography({
   as,
   truncate = false,
   lines = 1,
+  noHighlight = false,
   className,
   children,
 }: TypographyProps) {
   const element = as ?? defaultElement[variant];
+  const highlight = HIGHLIGHT_VARIANTS.has(variant) && !noHighlight;
 
   return (
     <StyledText
@@ -111,6 +150,7 @@ export function Typography({
       $color={color}
       $truncate={truncate}
       $lines={lines}
+      $highlight={highlight}
       className={className}
     >
       {children}
