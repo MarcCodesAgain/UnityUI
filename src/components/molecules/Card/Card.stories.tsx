@@ -46,15 +46,15 @@ export const Playground: Story = {
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
-      {(['default', 'outlined', 'ghost'] as const).map((variant) => (
-        <Card key={variant} variant={variant} style={{ width: '260px' }}>
+      {(['default', 'outlined', 'ghost', 'accent'] as const).map((variant) => (
+        <Card key={variant} variant={variant} style={{ width: '220px' }}>
           <Card.Header>
             <Badge label={variant} variant="outline" />
             <Typography variant="h6">Card {variant}</Typography>
           </Card.Header>
           <Card.Body>
             <Typography variant="bodySm" color="secondary">
-              Swiss minimalism — no radius, no shadow, no noise.
+              Swiss minimalism — no radius, no shadow.
             </Typography>
           </Card.Body>
         </Card>

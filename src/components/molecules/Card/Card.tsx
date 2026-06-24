@@ -4,7 +4,7 @@ import { Divider } from '../../atoms/Divider';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type CardVariant  = 'default' | 'outlined' | 'ghost';
+export type CardVariant  = 'default' | 'outlined' | 'ghost' | 'accent';
 
 export interface CardProps {
   variant?: CardVariant;
@@ -47,6 +47,16 @@ const variantStyles: Record<CardVariant, ReturnType<typeof css>> = {
   ghost: css`
     background-color: ${colors.bgSurface};
     border: ${borderWidth[1]} solid transparent;
+  `,
+  accent: css`
+    background-color: ${colors.bgPage};
+    border: ${borderWidth[2]} solid ${colors.primary};
+    /* Subtle blue tint on the top to reinforce the accent */
+    background-image: linear-gradient(
+      to bottom,
+      ${colors.blue50} 0px,
+      ${colors.bgPage} 48px
+    );
   `,
 };
 
@@ -92,8 +102,10 @@ const StyledCard = styled.div<{
         height: 100%;
       }
 
+      /* Full blue border via inset box-shadow — no layout shift */
       &:hover {
-        border-color: ${colors.primary};
+        box-shadow: inset 0 0 0 2px ${colors.primary};
+        border-color: transparent;
       }
     `}
 
