@@ -93,6 +93,7 @@ const RedText = styled.p`
 | Typography | ✅     | `display` · `h1`–`h6` · `bodyLg` · `body` · `bodySm` · `label` · `caption` · `overline` |
 | Input      | 🔜     | default · error · disabled |
 | Badge      | ✅     | `default` · `primary` · `outline` · `ghost` — dot indicator — sizes `sm` · `md` |
+| Divider    | ✅     | `default` · `strong` · `accent` — horizontal/vertical — optional label |
 | Card       | 🔜     | — |
 | Modal      | 🔜     | — |
 | Navigation | 🔜     | — |
