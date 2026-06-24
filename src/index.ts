@@ -17,7 +17,7 @@ export { GlobalStyles } from './styles/globalStyles';
 export * from './components/atoms/Button';
 export * from './components/atoms/Typography';
 // export * from './components/atoms/Input';
-// export * from './components/atoms/Badge';
+export * from './components/atoms/Badge';
 
 // Molecules
 // export * from './components/molecules/Card';
