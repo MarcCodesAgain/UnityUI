@@ -94,7 +94,7 @@ const RedText = styled.p`
 | Input      | ✅     | default · error · success · disabled — sizes `sm` · `md` · `lg` — label · hint |
 | Badge      | ✅     | `default` · `primary` · `outline` · `ghost` — dot indicator — sizes `sm` · `md` |
 | Divider    | ✅     | `default` · `strong` · `accent` — horizontal/vertical — optional label |
-| Card       | 🔜     | — |
+| Card       | ✅     | `default` · `outlined` · `ghost` — compound (Card.Header/Body/Footer) — interactive hover |
 | Spinner    | ✅     | sizes `sm` · `md` · `lg` · `xl` — variants `default` · `inverse` |
 | Modal      | 🔜     | — |
 | Navigation | 🔜     | — |

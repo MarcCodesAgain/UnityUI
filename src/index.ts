@@ -22,7 +22,7 @@ export * from './components/atoms/Divider';
 export * from './components/atoms/Spinner';
 
 // Molecules
-// export * from './components/molecules/Card';
+export * from './components/molecules/Card';
 
 // Organisms
 // export * from './components/organisms/Modal';
