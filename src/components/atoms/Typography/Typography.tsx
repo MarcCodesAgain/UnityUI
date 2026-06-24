@@ -76,7 +76,6 @@ const highlightStyles = css`
     height: 0.3em;
     width: 0%;
     background-color: ${colors.primary};
-    opacity: 0.3;
     transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
   }
