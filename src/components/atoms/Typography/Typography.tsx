@@ -65,7 +65,7 @@ export interface TypographyProps {
 
 const highlightStyles = css`
   position: relative;
-  display: inline-block; /* shrink-wrap to text width */
+  width: fit-content; /* shrink to text width so ::after is relative to it */
   cursor: default;
 
   &::after {
@@ -73,16 +73,16 @@ const highlightStyles = css`
     position: absolute;
     left: 0;
     bottom: 0.05em;
-    height: 0.35em;
+    height: 0.3em;
     width: 0%;
     background-color: ${colors.primary};
-    opacity: 0.25;
+    opacity: 0.3;
     transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
   }
 
   &:hover::after {
-    width: 100%;
+    width: calc(100% + 20px); /* text width + 20px overshoot */
   }
 `;
 
