@@ -1,32 +1,242 @@
-# React + TypeScript + Vite
+# UnityUI
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+> Swiss Minimalism Design System built with React + TypeScript + Styled Components.
 
-Currently, two official plugins are available:
+![npm](https://img.shields.io/npm/v/@unityui/core)
+![license](https://img.shields.io/badge/license-MIT-black)
+![typescript](https://img.shields.io/badge/TypeScript-strict-blue)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Philosophy
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+UnityUI follows the principles of **Swiss International Style** (International Typographic Style):
 
-## Expanding the Oxlint configuration
+- Typography is the hero — not decoration
+- Strict grid based on a **4px scale**
+- Palette of black, white, greys + a single red accent (`#E63329`)
+- No gradients, no heavy shadows, no large border-radius
+- Every component is functional first, beautiful by constraint
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+---
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+## Installation
+
+```bash
+npm install @unityui/core styled-components
+```
+
+UnityUI requires **React ≥ 18** and **styled-components ≥ 6** as peer dependencies — install them if you don't have them already.
+
+---
+
+## Setup
+
+Wrap your app with `ThemeProvider` and add `GlobalStyles` once at the root:
+
+```tsx
+// main.tsx / _app.tsx / layout.tsx
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles, theme } from '@unityui/core';
+
+export default function App({ children }) {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {children}
+    </ThemeProvider>
+  );
 }
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`GlobalStyles` applies a CSS reset, sets Inter as the base font, and wires up `focus-visible` accessibility outlines.
+
+---
+
+## Usage
+
+```tsx
+import { Button, Typography, Badge } from '@unityui/core';
+
+export default function Page() {
+  return (
+    <>
+      <Typography variant="h1">Hello, UnityUI</Typography>
+      <Button variant="primary" size="md">Get started</Button>
+      <Badge label="New" />
+    </>
+  );
+}
+```
+
+### Tokens
+
+All design tokens are exported and fully typed:
+
+```tsx
+import { colors, spacing, fontSize } from '@unityui/core';
+
+const RedText = styled.p`
+  color: ${colors.primary};        // #E63329
+  font-size: ${fontSize.lg};       // 18px
+  margin-top: ${spacing[4]};       // 16px
+`;
+```
+
+---
+
+## Components
+
+| Component  | Status | Variants |
+|------------|--------|----------|
+| Button     | 🔜     | `primary` · `secondary` · `ghost` — sizes `sm` · `md` · `lg` |
+| Typography | 🔜     | `h1`–`h6` · `body` · `bodySm` · `label` · `caption` · `overline` |
+| Input      | 🔜     | default · error · disabled |
+| Badge      | 🔜     | `default` · `primary` · `outline` |
+| Card       | 🔜     | — |
+| Modal      | 🔜     | — |
+| Navigation | 🔜     | — |
+
+---
+
+## Design Tokens
+
+### Colors
+
+```ts
+import { colors } from '@unityui/core';
+
+colors.black          // #0A0A0A
+colors.white          // #FFFFFF
+colors.grey100        // #EFEFEF  ...up to grey900
+colors.primary        // #E63329  (Swiss red accent)
+colors.textPrimary    // #0A0A0A
+colors.textSecondary  // #636363
+colors.textDisabled   // #ABABAB
+colors.borderDefault  // #DEDEDE
+colors.borderFocus    // #0A0A0A
+colors.bgPage         // #FFFFFF
+colors.bgSurface      // #F7F7F7
+```
+
+### Spacing (4px grid)
+
+```ts
+import { spacing } from '@unityui/core';
+
+spacing[1]   // 4px
+spacing[2]   // 8px
+spacing[4]   // 16px
+spacing[6]   // 24px
+spacing[8]   // 32px
+spacing[12]  // 48px
+spacing[16]  // 64px
+```
+
+### Typography
+
+```ts
+import { fontSize, fontWeight, textStyles } from '@unityui/core';
+
+fontSize.sm      // 14px
+fontSize.base    // 16px
+fontSize.xl      // 20px
+fontSize['4xl']  // 36px
+
+fontWeight.regular   // 400
+fontWeight.medium    // 500
+fontWeight.semibold  // 600
+fontWeight.bold      // 700
+
+// Pre-composed text styles (font + size + weight + line-height + tracking)
+textStyles.h1
+textStyles.body
+textStyles.label
+textStyles.overline
+```
+
+### Borders
+
+```ts
+import { borderRadius } from '@unityui/core';
+
+borderRadius.none  // 0px  — default for most components
+borderRadius.sm    // 2px
+borderRadius.md    // 4px
+// No 'lg' or 'full' — Swiss style stays sharp
+```
+
+---
+
+## Storybook
+
+Explore all components and their variants interactively:
+
+```bash
+npm run storybook
+```
+
+Opens at [http://localhost:6006](http://localhost:6006).
+
+---
+
+## Development
+
+```bash
+git clone https://github.com/marcllopis/unityui
+cd unityui
+npm install
+
+npm run dev            # Vite dev server
+npm run storybook      # Component explorer
+npm run test           # Vitest + React Testing Library
+npm run test:coverage  # Coverage report
+npm run build          # Library build → dist/
+```
+
+---
+
+## Publishing to npm
+
+```bash
+npm run build        # Runs automatically via prepublishOnly
+npm publish --access public
+```
+
+The build outputs:
+
+| File | Format | Use case |
+|------|--------|----------|
+| `dist/unityui.mjs` | ESM | Vite, modern bundlers |
+| `dist/unityui.cjs` | CJS | Next.js, Jest, legacy |
+| `dist/index.d.ts`  | Types | TypeScript consumers |
+
+React and styled-components are **not bundled** — they are `peerDependencies`. This avoids duplicate React instances in consumer projects.
+
+---
+
+## Architecture Decisions
+
+### Why Styled Components over Tailwind or CSS Modules?
+Styled Components allows co-locating styles with component logic, supports the `ThemeProvider` pattern for token distribution, and generates scoped class names automatically. For a design system where tokens need to flow through every component via a shared theme object, this is the cleanest model.
+
+### Why Atomic Design?
+The `atoms → molecules → organisms` hierarchy maps directly to how a design system grows: start with the smallest primitives (Button, Typography), compose them into patterns (Card, FormField), then into full sections (Navigation, Modal). It also makes onboarding easy for new contributors.
+
+### Why a separate `tsconfig.build.json`?
+The development tsconfig (`tsconfig.app.json`) uses `allowImportingTsExtensions: true`, which requires `noEmit: true` — TypeScript won't emit files in this mode. The build tsconfig disables that flag so `vite-plugin-dts` can emit `.d.ts` declarations cleanly without affecting the dev experience.
+
+### Why `sideEffects: false`?
+Tells bundlers (webpack, Rollup) that no file in the package has side effects when imported. Enables aggressive tree-shaking: if a consumer only imports `Button`, nothing else ends up in their bundle.
+
+### Why `peerDependencies` for React and styled-components?
+If UnityUI bundled its own copy of React, consumer projects would end up with two React instances — breaking hooks. Peer dependencies ensure the consumer's installed version is used instead. Declared ranges: `react >= 18`, `styled-components >= 6`.
+
+### Why Vitest over Jest?
+Vitest shares the same Vite transform pipeline used in development, meaning tests run against the exact same code that gets built. No separate Babel config, no transform mismatch. Faster cold start and native ESM support out of the box.
+
+---
+
+## License
+
+MIT © Marc Llopis
