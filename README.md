@@ -91,7 +91,7 @@ const RedText = styled.p`
 |------------|--------|----------|
 | Button     | ✅     | `primary` · `secondary` · `ghost` — sizes `sm` · `md` · `lg` |
 | Typography | ✅     | `display` · `h1`–`h6` · `bodyLg` · `body` · `bodySm` · `label` · `caption` · `overline` |
-| Input      | 🔜     | default · error · disabled |
+| Input      | ✅     | default · error · success · disabled — sizes `sm` · `md` · `lg` — label · hint |
 | Badge      | ✅     | `default` · `primary` · `outline` · `ghost` — dot indicator — sizes `sm` · `md` |
 | Divider    | ✅     | `default` · `strong` · `accent` — horizontal/vertical — optional label |
 | Card       | 🔜     | — |
