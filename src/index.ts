@@ -14,7 +14,7 @@ export type { Theme } from './styles/theme';
 export { GlobalStyles } from './styles/globalStyles';
 
 // Atoms
-// export * from './components/atoms/Button';
+export * from './components/atoms/Button';
 // export * from './components/atoms/Typography';
 // export * from './components/atoms/Input';
 // export * from './components/atoms/Badge';

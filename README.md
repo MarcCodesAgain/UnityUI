@@ -89,7 +89,7 @@ const RedText = styled.p`
 
 | Component  | Status | Variants |
 |------------|--------|----------|
-| Button     | 🔜     | `primary` · `secondary` · `ghost` — sizes `sm` · `md` · `lg` |
+| Button     | ✅     | `primary` · `secondary` · `ghost` — sizes `sm` · `md` · `lg` |
 | Typography | 🔜     | `h1`–`h6` · `body` · `bodySm` · `label` · `caption` · `overline` |
 | Input      | 🔜     | default · error · disabled |
 | Badge      | 🔜     | `default` · `primary` · `outline` |
