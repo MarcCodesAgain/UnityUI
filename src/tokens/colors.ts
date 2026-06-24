@@ -1,6 +1,6 @@
 /**
  * UnityUI — Color Tokens
- * Swiss Minimalism palette: black, white, greys, red accent
+ * Swiss Minimalism palette: black, white, greys + Electric Blue #0047FF accent
  */
 
 export const colors = {
@@ -20,25 +20,26 @@ export const colors = {
   grey800: '#2B2B2B',
   grey900: '#1A1A1A',
 
-  // Accent — Swiss red
-  red50:   '#FDF0EF',
-  red100:  '#FAD3D1',
-  red200:  '#F5A5A2',
-  red300:  '#EF7773',
-  red400:  '#E84844',
-  red500:  '#E63329', // primary accent
-  red600:  '#C22822',
-  red700:  '#9A1F1A',
-  red800:  '#721613',
-  red900:  '#480E0B',
+  // Accent — Electric Blue
+  blue50:  '#EEF3FF',
+  blue100: '#D4E0FF',
+  blue200: '#A9C1FF',
+  blue300: '#7EA2FF',
+  blue400: '#5383FF',
+  blue500: '#0047FF', // primary accent
+  blue600: '#0039CC',
+  blue700: '#002B99',
+  blue800: '#001D66',
+  blue900: '#000F33',
 
   // Semantic aliases
-  primary:   '#E63329',
+  primary:       '#0047FF',
   textPrimary:   '#0A0A0A',
   textSecondary: '#636363',
   textDisabled:  '#ABABAB',
+  textInverse:   '#FFFFFF',
   borderDefault: '#DEDEDE',
-  borderFocus:   '#0A0A0A',
+  borderFocus:   '#0047FF',
   bgPage:        '#FFFFFF',
   bgSurface:     '#F7F7F7',
 } as const;

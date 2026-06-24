@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, spacing, fontSize, fontWeight, letterSpacing, borderRadius, borderWidth } from '../../../tokens';
+import { colors, spacing, fontSize, fontWeight, fontFamily, letterSpacing, borderRadius, borderWidth } from '../../../tokens';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -17,17 +17,17 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const sizeStyles = {
   sm: css`
     padding: ${spacing[2]} ${spacing[4]};
-    font-size: ${fontSize.sm};
+    font-size: ${fontSize.xs};
     height: 32px;
   `,
   md: css`
     padding: ${spacing[3]} ${spacing[6]};
-    font-size: ${fontSize.base};
+    font-size: ${fontSize.sm};
     height: 40px;
   `,
   lg: css`
     padding: ${spacing[4]} ${spacing[8]};
-    font-size: ${fontSize.lg};
+    font-size: ${fontSize.base};
     height: 48px;
   `,
 };
@@ -60,7 +60,8 @@ const variantStyles = {
     }
 
     &:active:not(:disabled) {
-      background-color: ${colors.grey200};
+      border-color: ${colors.primary};
+      color: ${colors.primary};
     }
   `,
   ghost: css`
@@ -74,7 +75,9 @@ const variantStyles = {
     }
 
     &:active:not(:disabled) {
-      background-color: ${colors.grey200};
+      color: ${colors.primary};
+      border-color: ${colors.blue100};
+      background-color: ${colors.blue50};
     }
   `,
 };
@@ -98,10 +101,10 @@ const StyledButton = styled.button<{
   text-decoration: none;
   user-select: none;
 
-  /* Base typography */
-  font-family: inherit;
+  /* Technical voice — mono font for button labels */
+  font-family: ${fontFamily.mono};
   font-weight: ${fontWeight.semibold};
-  letter-spacing: ${letterSpacing.wide};
+  letter-spacing: ${letterSpacing.wider};
   line-height: 1;
 
   /* Swiss: sharp corners */
@@ -134,7 +137,7 @@ const StyledButton = styled.button<{
       pointer-events: none;
     `}
 
-  /* Focus visible — a11y */
+  /* Focus visible — Electric Blue */
   &:focus-visible {
     outline: 2px solid ${colors.primary};
     outline-offset: 2px;

@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
   *, *::before, *::after {
     box-sizing: border-box;
@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
 
   body {
@@ -26,10 +27,22 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${theme.colors.bgPage};
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: ${theme.fontWeight.bold};
+  /* Headings — black weight by default, Inter tension system */
+  h1, h2 {
+    font-weight: ${theme.fontWeight.black};
     line-height: ${theme.lineHeight.tight};
+    letter-spacing: ${theme.letterSpacing.tighter};
+  }
+
+  h3, h4 {
+    font-weight: ${theme.fontWeight.bold};
+    line-height: ${theme.lineHeight.snug};
     letter-spacing: ${theme.letterSpacing.tight};
+  }
+
+  h5, h6 {
+    font-weight: ${theme.fontWeight.semibold};
+    line-height: ${theme.lineHeight.snug};
   }
 
   a {
@@ -53,7 +66,12 @@ export const GlobalStyles = createGlobalStyle`
     font-family: inherit;
   }
 
-  /* Focus visible — accesibilidad */
+  /* Mono elements inherit the technical voice */
+  code, kbd, samp, pre {
+    font-family: ${theme.fontFamily.mono};
+  }
+
+  /* Focus visible — a11y, uses Electric Blue */
   :focus-visible {
     outline: 2px solid ${theme.colors.borderFocus};
     outline-offset: 2px;

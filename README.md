@@ -14,7 +14,7 @@ UnityUI follows the principles of **Swiss International Style** (International T
 
 - Typography is the hero — not decoration
 - Strict grid based on a **4px scale**
-- Palette of black, white, greys + a single red accent (`#E63329`)
+- Palette of black, white, greys + Electric Blue accent (`#0047FF`)
 - No gradients, no heavy shadows, no large border-radius
 - Every component is functional first, beautiful by constraint
 
@@ -109,7 +109,7 @@ import { colors } from '@unityui/core';
 colors.black          // #0A0A0A
 colors.white          // #FFFFFF
 colors.grey100        // #EFEFEF  ...up to grey900
-colors.primary        // #E63329  (Swiss red accent)
+colors.primary        // #0047FF  (Electric Blue accent)
 colors.textPrimary    // #0A0A0A
 colors.textSecondary  // #636363
 colors.textDisabled   // #ABABAB
@@ -216,6 +216,11 @@ React and styled-components are **not bundled** — they are `peerDependencies`.
 ---
 
 ## Architecture Decisions
+
+### Why Electric Blue (#0047FF) instead of a neutral accent?
+UnityUI uses two voices: **Inter** (the editorial voice, weights 300–800) and **JetBrains Mono** (the technical voice for labels, badges, overlines). The Electric Blue connects both — precise enough for technical contexts, bold enough for editorial impact. It references the energy of digital precision instruments without the coldness of corporate blues.
+
+The typographic tension system deliberately pairs extremes: Inter 800 (black weight) for headings and impact, Inter 300 (light) for large body text and breathing room. Button labels use JetBrains Mono with wide letter-spacing — a small but distinctive detail that signals the system has a point of view.
 
 ### Why Styled Components over Tailwind or CSS Modules?
 Styled Components allows co-locating styles with component logic, supports the `ThemeProvider` pattern for token distribution, and generates scoped class names automatically. For a design system where tokens need to flow through every component via a shared theme object, this is the cleanest model.
