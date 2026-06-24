@@ -46,7 +46,7 @@ export const Playground: Story = {
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
-      {(['default', 'outlined', 'ghost', 'accent'] as const).map((variant) => (
+      {(['default', 'outlined', 'ghost'] as const).map((variant) => (
         <Card key={variant} variant={variant} style={{ width: '220px' }}>
           <Card.Header>
             <Badge label={variant} variant="outline" />

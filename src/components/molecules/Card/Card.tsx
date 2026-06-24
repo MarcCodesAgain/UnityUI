@@ -4,7 +4,7 @@ import { Divider } from '../../atoms/Divider';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type CardVariant  = 'default' | 'outlined' | 'ghost' | 'accent';
+export type CardVariant  = 'default' | 'outlined' | 'ghost';
 
 export interface CardProps {
   variant?: CardVariant;
@@ -48,16 +48,6 @@ const variantStyles: Record<CardVariant, ReturnType<typeof css>> = {
     background-color: ${colors.bgSurface};
     border: ${borderWidth[1]} solid transparent;
   `,
-  accent: css`
-    background-color: ${colors.bgPage};
-    border: ${borderWidth[2]} solid ${colors.primary};
-    /* Subtle blue tint on the top to reinforce the accent */
-    background-image: linear-gradient(
-      to bottom,
-      ${colors.blue50} 0px,
-      ${colors.bgPage} 48px
-    );
-  `,
 };
 
 // ─── Styled container ─────────────────────────────────────────────────────────
@@ -80,29 +70,12 @@ const StyledCard = styled.div<{
 
   ${({ $variant }) => variantStyles[$variant]}
 
-  /* Left accent bar */
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 0%;
-    background-color: ${colors.primary};
-    transition: height 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-  }
-
   ${({ $interactive }) =>
     $interactive &&
     css`
       cursor: pointer;
 
-      &:hover::before {
-        height: 100%;
-      }
-
-      /* Full blue border via inset box-shadow — no layout shift */
+      /* Blue border on hover — inset box-shadow avoids layout shift */
       &:hover {
         box-shadow: inset 0 0 0 2px ${colors.primary};
         border-color: transparent;
