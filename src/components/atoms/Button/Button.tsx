@@ -33,6 +33,12 @@ const sizeStyles = {
 };
 
 // ─── Variant styles ───────────────────────────────────────────────────────────
+//
+// Hover micro-interaction: block reveal — a fill rises bottom→top via ::before
+//
+// primary:   black bg  → Electric Blue fill, text stays white
+// secondary: outline   → black fill rises, text flips white via mix-blend-mode
+// ghost:     empty     → grey100 fill rises, text stays black
 
 const variantStyles = {
   primary: css`
@@ -40,14 +46,13 @@ const variantStyles = {
     color: ${colors.white};
     border: ${borderWidth[2]} solid ${colors.black};
 
-    &:hover:not(:disabled) {
-      background-color: ${colors.grey800};
-      border-color: ${colors.grey800};
-    }
+    &::before { background-color: ${colors.primary}; }
 
-    &:active:not(:disabled) {
-      background-color: ${colors.primary};
+    &:hover:not(:disabled) {
       border-color: ${colors.primary};
+    }
+    &:active:not(:disabled) {
+      transform: translateY(1px);
     }
   `,
   secondary: css`
@@ -55,13 +60,17 @@ const variantStyles = {
     color: ${colors.black};
     border: ${borderWidth[2]} solid ${colors.black};
 
-    &:hover:not(:disabled) {
-      background-color: ${colors.grey100};
+    &::before { background-color: ${colors.black}; }
+
+    /* mix-blend-mode trick: text over black fill reads as white */
+    & > span {
+      mix-blend-mode: difference;
+      color: ${colors.black};
     }
 
     &:active:not(:disabled) {
+      transform: translateY(1px);
       border-color: ${colors.primary};
-      color: ${colors.primary};
     }
   `,
   ghost: css`
@@ -69,15 +78,15 @@ const variantStyles = {
     color: ${colors.black};
     border: ${borderWidth[2]} solid transparent;
 
+    &::before { background-color: ${colors.grey100}; }
+
     &:hover:not(:disabled) {
-      background-color: ${colors.grey100};
       border-color: ${colors.grey200};
     }
-
     &:active:not(:disabled) {
-      color: ${colors.primary};
+      transform: translateY(1px);
       border-color: ${colors.blue100};
-      background-color: ${colors.blue50};
+      &::before { background-color: ${colors.blue50}; }
     }
   `,
 };
@@ -90,7 +99,6 @@ const StyledButton = styled.button<{
   $fullWidth: boolean;
   $loading: boolean;
 }>`
-  /* Reset */
   appearance: none;
   cursor: pointer;
   display: inline-flex;
@@ -100,18 +108,38 @@ const StyledButton = styled.button<{
   white-space: nowrap;
   text-decoration: none;
   user-select: none;
+  position: relative;
+  overflow: hidden;
 
-  /* Technical voice — mono font for button labels */
   font-family: ${fontFamily.mono};
   font-weight: ${fontWeight.semibold};
   letter-spacing: ${letterSpacing.wider};
   line-height: 1;
 
-  /* Swiss: sharp corners */
   border-radius: ${borderRadius.none};
 
-  /* Transitions */
-  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  transition:
+    border-color 180ms ease,
+    transform 80ms ease;
+
+  /* ── Block reveal ────────────────────────────────────────────────────────
+   * ::before anchors to the bottom and expands upward on hover.
+   * z-index 0 keeps it behind the Label (z-index 1).
+   */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0%;
+    transition: height 220ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+  }
+
+  &:hover:not(:disabled)::before {
+    height: 100%;
+  }
 
   /* Size */
   ${({ $size }) => sizeStyles[$size]}
@@ -122,10 +150,11 @@ const StyledButton = styled.button<{
   /* Full width */
   ${({ $fullWidth }) => $fullWidth && css`width: 100%;`}
 
-  /* Disabled */
+  /* Disabled — no animation */
   &:disabled {
     cursor: not-allowed;
     opacity: 0.4;
+    &::before { display: none; }
   }
 
   /* Loading */
@@ -135,16 +164,26 @@ const StyledButton = styled.button<{
       cursor: wait;
       opacity: 0.7;
       pointer-events: none;
+      &::before { display: none; }
     `}
 
-  /* Focus visible — Electric Blue */
   &:focus-visible {
     outline: 2px solid ${colors.primary};
     outline-offset: 2px;
   }
 `;
 
-// ─── Spinner ──────────────────────────────────────────────────────────────────
+// Label — z-index 1 so it floats above the ::before fill
+
+const Label = styled.span`
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+`;
+
+// Spinner
 
 const Spinner = styled.span`
   width: 1em;
@@ -180,8 +219,10 @@ export function Button({
       aria-busy={loading}
       {...props}
     >
-      {loading && <Spinner aria-hidden="true" />}
-      {children}
+      <Label>
+        {loading && <Spinner aria-hidden="true" />}
+        {children}
+      </Label>
     </StyledButton>
   );
 }
