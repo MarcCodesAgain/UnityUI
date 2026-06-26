@@ -1,12 +1,13 @@
 {
-  "name": "@unityui/core",
-  "version": "0.1.0",
+  "name": "@marcllopis/unityui",
+  "version": "1.0.0",
   "description": "Swiss Minimalism Design System — React + TypeScript + Styled Components",
   "author": "Marc Llopis",
   "license": "MIT",
   "type": "module",
+  "repository": "https://github.com/MarcCodesAgain/UnityUI",
+  "homepage": "https://6a3ecef7019c1a5d67a81d71-irgzwxjhri.chromatic.com/",
   "private": false,
-
   "exports": {
     ".": {
       "import": "./dist/unityui.mjs",
@@ -17,10 +18,10 @@
   "main": "./dist/unityui.cjs",
   "module": "./dist/unityui.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
-
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
-
   "scripts": {
     "dev": "vite --mode development",
     "build": "vite build",
@@ -31,15 +32,14 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "oxlint",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "chromatic": "npx chromatic --project-token=chpt_d4e508e12134218"
   },
-
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
     "styled-components": ">=6.0.0"
   },
-
   "devDependencies": {
     "@chromatic-com/storybook": "^5.2.1",
     "@storybook/addon-a11y": "^10.4.6",
@@ -56,15 +56,16 @@
     "@types/styled-components": "^5.1.36",
     "@vitejs/plugin-react": "^6.0.2",
     "@vitest/coverage-v8": "^4.1.9",
+    "chromatic": "^17.7.2",
     "jsdom": "^29.1.1",
     "oxlint": "^1.69.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "storybook": "^10.4.6",
+    "styled-components": "^6.4.2",
     "typescript": "~6.0.2",
     "vite": "^8.1.0",
     "vite-plugin-dts": "^5.0.3",
-    "vitest": "^4.1.9",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "styled-components": "^6.4.2"
+    "vitest": "^4.1.9"
   }
 }

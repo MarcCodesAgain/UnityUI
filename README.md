@@ -12,7 +12,7 @@
 
 Built with React 18, TypeScript, and styled-components. Inspired by the International Typographic Style — sharp edges, precise spacing, no decoration for its own sake.
 
-[**Storybook →**](https://unityui.dev/storybook) &nbsp;·&nbsp; [Components](#components) &nbsp;·&nbsp; [Tokens](#design-tokens) &nbsp;·&nbsp; [Contributing](#contributing)
+[**Storybook →**](https://6a3ecef7019c1a5d67a81d71-irgzwxjhri.chromatic.com/) &nbsp;·&nbsp; [Components](#components) &nbsp;·&nbsp; [Tokens](#design-tokens) &nbsp;·&nbsp; [Contributing](#contributing)
 
 </div>
 
