@@ -28,7 +28,6 @@ const spinnerVariantMap: Record<ButtonVariant, SpinnerVariant> = {
   ghost:     'default',
 };
 
-// ─── Size styles ─────────────────────────────────────────────────────────────
 
 const sizeStyles = {
   sm: css`
@@ -48,7 +47,6 @@ const sizeStyles = {
   `,
 };
 
-// ─── Variant styles ───────────────────────────────────────────────────────────
 
 const variantStyles = {
   primary: css`
@@ -103,7 +101,6 @@ const variantStyles = {
   `,
 };
 
-// ─── Styled component ─────────────────────────────────────────────────────────
 
 const StyledButton = styled.button<{
   $variant: ButtonVariant;
@@ -184,7 +181,6 @@ const Label = styled.span`
   gap: inherit;
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Button({
   variant = 'primary',

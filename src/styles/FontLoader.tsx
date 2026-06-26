@@ -1,4 +1,3 @@
-// ─── FontLoader ───────────────────────────────────────────────────────────────
 //
 // @import inside a <style> tag is spec-invalid and silently ignored in browsers.
 // Use <FontLoader /> once at your app root (before <GlobalStyles />) instead.

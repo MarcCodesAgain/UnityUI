@@ -55,7 +55,6 @@ export const letterSpacing = {
   widest:  '0.14em',  // mono labels / overlines
 } as const;
 
-// ─── Pre-composed text styles ──────────────────────────────────────────────────
 //
 // Headings use the Inter tension system:
 //   h1/h2  → black (800) — maximum impact

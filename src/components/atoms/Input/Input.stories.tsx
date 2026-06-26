@@ -72,7 +72,6 @@ import { Input } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Input>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 /** Click the input to see the accent-line animation. */
 export const Playground: Story = {
@@ -84,7 +83,6 @@ export const Playground: Story = {
   },
 };
 
-// ─── All states ───────────────────────────────────────────────────────────────
 
 /**
  * Every state the Input can be in.
@@ -124,7 +122,6 @@ export const AllStates: Story = {
   },
 };
 
-// ─── Sizes ────────────────────────────────────────────────────────────────────
 
 /** Three heights to match your layout density. */
 export const Sizes: Story = {
@@ -137,7 +134,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── Full width ───────────────────────────────────────────────────────────────
 
 export const FullWidth: Story = {
   render: () => (
@@ -148,7 +144,6 @@ export const FullWidth: Story = {
   ),
 };
 
-// ─── In context — login form ──────────────────────────────────────────────────
 
 /** Inputs inside a real card layout. Note how the accent line aligns with the card border. */
 export const LoginForm: Story = {

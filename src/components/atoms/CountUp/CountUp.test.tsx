@@ -7,7 +7,6 @@ import { CountUp } from './CountUp';
 const wrap = (ui: React.ReactElement) =>
   render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);
 
-// ── Mock IntersectionObserver ──────────────────────────────────────────────────
 let observerCallback: IntersectionObserverCallback | null = null;
 
 beforeEach(() => {

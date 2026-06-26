@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { textStyles, colors } from '../../../tokens';
 import type { TextStyleToken } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type TypographyVariant = TextStyleToken;
 export type TypographyColor =
@@ -57,7 +56,6 @@ export interface TypographyProps {
   children: React.ReactNode;
 }
 
-// ─── Highlight sweep ──────────────────────────────────────────────────────────
 //
 // A 3px Electric Blue bar anchored to the bottom of the heading.
 // On hover it sweeps left → right (width 0% → 100%) in 320ms.
@@ -86,7 +84,6 @@ const highlightStyles = css`
   }
 `;
 
-// ─── Styled component ─────────────────────────────────────────────────────────
 
 const StyledText = styled.span<{
   $variant: TypographyVariant;
@@ -130,7 +127,6 @@ const StyledText = styled.span<{
         `)}
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Typography({
   variant = 'body',

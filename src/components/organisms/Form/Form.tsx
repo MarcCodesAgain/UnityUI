@@ -7,7 +7,6 @@ import { Typography } from '../../atoms/Typography';
 import { Alert } from '../../atoms/Alert';
 import { renderField } from './FormFields';
 
-// ─── Field definitions ────────────────────────────────────────────────────────
 
 interface BaseField {
   /** Unique key — used as the key in the submitted values object */
@@ -57,11 +56,9 @@ export type FormField =
   | RadioField
   | TextareaField;
 
-// ─── Form values ──────────────────────────────────────────────────────────────
 
 export type FormValues = Record<string, string | boolean>;
 
-// ─── Validation ───────────────────────────────────────────────────────────────
 
 function validateField(field: FormField, value: string | boolean): string | undefined {
   if (field.required) {
@@ -84,7 +81,6 @@ function validateAll(fields: FormField[], values: FormValues): Record<string, st
   return errors;
 }
 
-// ─── Props ────────────────────────────────────────────────────────────────────
 
 export interface FormProps {
   fields: FormField[];
@@ -104,7 +100,6 @@ export interface FormProps {
   style?: React.CSSProperties;
 }
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 const StyledForm = styled.form`
   display: flex;
@@ -125,7 +120,6 @@ const FieldsWrapper = styled.div`
   gap: ${spacing[5]};
 `;
 
-// ─── Field primitives — exported for custom form layouts ──────────────────────
 //
 // Consumers who need multi-column or conditional layouts can compose these
 // building blocks directly without reimplementing the visual style.
@@ -166,11 +160,9 @@ export const FieldRow = styled.div`
   width: 100%;
 `;
 
-// ─── Stable fallback so `initialValues = {}` never creates a new reference ────
 
 const EMPTY_INITIAL_VALUES: Partial<FormValues> = {};
 
-// ─── Form component ───────────────────────────────────────────────────────────
 
 export function Form({
   fields,

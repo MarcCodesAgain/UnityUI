@@ -62,7 +62,6 @@ import { CountUp, StatCard, StatValue, StatLabel, StatDelta } from '@unityui/cor
 };
 export default meta;
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function Page({ children }: { children: React.ReactNode }) {
   return (
@@ -84,7 +83,6 @@ function Page({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Stories ──────────────────────────────────────────────────────────────────
 
 /** Scroll into view to trigger — or reload the story */
 export const Default: StoryObj = {

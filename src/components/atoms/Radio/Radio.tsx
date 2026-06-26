@@ -6,7 +6,6 @@ import {
 } from '../../../tokens';
 import { HiddenInput } from '../../shared/fieldStyles';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type RadioSize = 'sm' | 'md' | 'lg';
 
@@ -29,7 +28,6 @@ export interface RadioGroupProps {
   direction?: 'vertical' | 'horizontal';
 }
 
-// ─── Size maps ────────────────────────────────────────────────────────────────
 
 const outerSize: Record<RadioSize, string> = {
   sm: '14px',
@@ -49,7 +47,6 @@ const labelFontSize: Record<RadioSize, string> = {
   lg: fontSize.lg,
 };
 
-// ─── Dot pop animation ────────────────────────────────────────────────────────
 //
 // Inner dot scales from 0 → 1 with a slight overshoot (spring feel).
 
@@ -59,7 +56,6 @@ const dotPop = keyframes`
   100% { transform: translate(-50%, -50%) scale(1); }
 `;
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 
 const Circle = styled.div<{
@@ -148,7 +144,6 @@ const HintText = styled.span<{ $error: boolean; $size: RadioSize }>`
   padding-left: calc(${({ $size }) => outerSize[$size]} + ${spacing[3]});
 `;
 
-// ─── Radio (single) ───────────────────────────────────────────────────────────
 
 export function Radio({
   label,
@@ -223,7 +218,6 @@ export function Radio({
   );
 }
 
-// ─── RadioGroup ───────────────────────────────────────────────────────────────
 
 const GroupWrapper = styled.div`
   display: inline-flex;

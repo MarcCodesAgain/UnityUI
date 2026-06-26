@@ -64,7 +64,6 @@ function App() {
 };
 export default meta;
 
-// ─── Sample items ──────────────────────────────────────────────────────────────
 
 const ITEMS: CommandItem[] = [
   // Navigation
@@ -195,7 +194,6 @@ const ITEMS: CommandItem[] = [
   },
 ];
 
-// ─── Decorator: shows a button to open + global ⌘K hint ──────────────────────
 
 function PaletteWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -216,7 +214,6 @@ function PaletteWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Stories ──────────────────────────────────────────────────────────────────
 
 export const Default: StoryObj = {
   render: () => {

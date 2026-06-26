@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { colors, spacing, borderWidth, fontFamily, fontWeight, fontSize, letterSpacing } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type AlertVariant  = 'info' | 'success' | 'warning' | 'error';
 
@@ -15,7 +14,6 @@ export interface AlertProps {
   style?: React.CSSProperties;
 }
 
-// ─── Token maps ───────────────────────────────────────────────────────────────
 
 const variantTokens: Record<AlertVariant, {
   accent: string;
@@ -44,7 +42,6 @@ const variantTokens: Record<AlertVariant, {
   },
 };
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 const Wrapper = styled.div<{ $variant: AlertVariant }>`
   display: flex;
@@ -124,7 +121,6 @@ const DismissButton = styled.button`
   }
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Alert({
   variant = 'info',

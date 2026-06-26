@@ -8,7 +8,6 @@ import type { ColumnDef } from './Table';
 const wrap = (ui: React.ReactElement) =>
   render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);
 
-// ─── Sample data ──────────────────────────────────────────────────────────────
 
 interface Row { id: string; name: string; score: number; }
 
@@ -23,7 +22,6 @@ const DATA: Row[] = [
   { id: '3', name: 'Bob',     score: 72 },
 ];
 
-// ─── Table primitives ─────────────────────────────────────────────────────────
 
 describe('Table primitives', () => {
   it('renders headers and cells', () => {
@@ -88,7 +86,6 @@ describe('Table primitives', () => {
   });
 });
 
-// ─── DataTable ────────────────────────────────────────────────────────────────
 
 describe('DataTable', () => {
   it('renders all column headers', () => {
@@ -163,7 +160,6 @@ describe('DataTable', () => {
   });
 });
 
-// ─── Selection ────────────────────────────────────────────────────────────────
 
 describe('DataTable selection', () => {
   it('renders checkboxes when selectable', () => {
@@ -222,7 +218,6 @@ describe('DataTable selection', () => {
   });
 });
 
-// ─── Skeleton ─────────────────────────────────────────────────────────────────
 
 describe('DataTableSkeleton', () => {
   it('renders the correct number of skeleton rows', () => {

@@ -73,7 +73,6 @@ export const Playground: Story = {
   ),
 };
 
-// ─── Variants ─────────────────────────────────────────────────────────────────
 
 export const Variants: Story = {
   render: () => (
@@ -90,7 +89,6 @@ export const Variants: Story = {
   ),
 };
 
-// ─── With label ───────────────────────────────────────────────────────────────
 
 export const WithLabel: Story = {
   render: () => (
@@ -102,7 +100,6 @@ export const WithLabel: Story = {
   ),
 };
 
-// ─── Vertical ─────────────────────────────────────────────────────────────────
 
 export const Vertical: Story = {
   render: () => (
@@ -118,7 +115,6 @@ export const Vertical: Story = {
   ),
 };
 
-// ─── In context ───────────────────────────────────────────────────────────────
 
 export const InContext: Story = {
   render: () => (

@@ -49,7 +49,6 @@ import { Alert } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   args: {
@@ -59,7 +58,6 @@ export const Playground: Story = {
   },
 };
 
-// ─── All variants ─────────────────────────────────────────────────────────────
 
 export const AllVariants: Story = {
   render: () => (
@@ -80,7 +78,6 @@ export const AllVariants: Story = {
   ),
 };
 
-// ─── Without title ────────────────────────────────────────────────────────────
 
 export const WithoutTitle: Story = {
   render: () => (
@@ -93,7 +90,6 @@ export const WithoutTitle: Story = {
   ),
 };
 
-// ─── Dismissible ──────────────────────────────────────────────────────────────
 
 export const Dismissible: Story = {
   render: () => {
@@ -126,7 +122,6 @@ export const Dismissible: Story = {
   },
 };
 
-// ─── In context — form feedback ───────────────────────────────────────────────
 
 export const FormFeedback: Story = {
   render: () => {

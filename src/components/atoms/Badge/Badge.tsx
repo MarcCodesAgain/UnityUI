@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { colors, fontFamily, fontWeight, fontSize, letterSpacing, spacing, borderWidth } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type BadgeVariant = 'default' | 'primary' | 'outline' | 'ghost';
 export type BadgeSize   = 'sm' | 'md';
@@ -14,7 +13,6 @@ export interface BadgeProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 
   dot?: boolean;
 }
 
-// ─── Variant styles ───────────────────────────────────────────────────────────
 
 const variantStyles: Record<BadgeVariant, ReturnType<typeof css>> = {
   default: css`
@@ -52,7 +50,6 @@ const sizeStyles: Record<BadgeSize, ReturnType<typeof css>> = {
   `,
 };
 
-// ─── Dot ─────────────────────────────────────────────────────────────────────
 
 const Dot = styled.span<{ $variant: BadgeVariant }>`
   width: 6px;
@@ -63,7 +60,6 @@ const Dot = styled.span<{ $variant: BadgeVariant }>`
     $variant === 'primary' ? colors.white : colors.primary};
 `;
 
-// ─── Styled component ─────────────────────────────────────────────────────────
 
 const StyledBadge = styled.span<{
   $variant: BadgeVariant;
@@ -88,7 +84,6 @@ const StyledBadge = styled.span<{
   ${({ $variant }) => variantStyles[$variant]}
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Badge({
   label,

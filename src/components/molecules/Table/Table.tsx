@@ -6,7 +6,6 @@ import {
 } from '../../../tokens';
 import { Checkbox } from '../../atoms/Checkbox';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type SortDirection = 'asc' | 'desc' | null;
 export type ColumnAlign   = 'left' | 'center' | 'right';
@@ -67,7 +66,6 @@ export interface TableCellProps {
   colSpan?: number;
 }
 
-// ─── DataTable types ──────────────────────────────────────────────────────────
 
 export interface DataTableProps<T extends object = object> {
   columns: ColumnDef<T>[];
@@ -89,7 +87,6 @@ export interface DataTableProps<T extends object = object> {
   style?: React.CSSProperties;
 }
 
-// ─── Context — passes table config to sub-components ─────────────────────────
 
 interface TableConfig {
   striped: boolean;
@@ -103,7 +100,6 @@ const TableContext = createContext<TableConfig>({
   stickyHeader: false,
 });
 
-// ─── Animations ───────────────────────────────────────────────────────────────
 
 const shimmer = keyframes`
   0%   { background-position: -400px 0; }
@@ -116,7 +112,6 @@ const arrowIn = keyframes`
   to   { opacity: 1; transform: translateY(0); }
 `;
 
-// ─── Styled primitives ────────────────────────────────────────────────────────
 
 const ScrollWrapper = styled.div`
   width: 100%;
@@ -318,7 +313,6 @@ const EmptyCell = styled.td`
   border-bottom: ${borderWidth[1]} solid ${colors.borderDefault};
 `;
 
-// ─── SVG sort arrow (10×6, square linecap — Swiss aesthetic) ─────────────────
 
 function ArrowUp() {
   return (
@@ -328,7 +322,6 @@ function ArrowUp() {
   );
 }
 
-// ─── Table sub-components (low-level compound API) ───────────────────────────
 
 function TableHead({ children }: TableHeadProps) {
   return <StyledThead>{children}</StyledThead>;
@@ -443,7 +436,6 @@ function TableCell({ align = 'left', children, colSpan }: TableCellProps) {
   );
 }
 
-// ─── Table (compound root) ───────────────────────────────────────────────────
 
 export function Table({
   striped = false,
@@ -476,7 +468,6 @@ Table.Row          = TableRow;
 Table.HeaderCell   = TableHeaderCell;
 Table.Cell         = TableCell;
 
-// ─── DataTable (high-level config-driven) ────────────────────────────────────
 
 const SKELETON_ROWS = 5;
 
@@ -686,7 +677,6 @@ export function DataTable<T extends object>({
   );
 }
 
-// ─── DataTable.Skeleton — loading placeholder ─────────────────────────────────
 
 interface DataTableSkeletonProps {
   columns: number;

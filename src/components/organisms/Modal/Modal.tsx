@@ -6,7 +6,6 @@ import {
   letterSpacing, spacing, borderWidth,
 } from '../../../tokens';
 
-// ─── Scroll-lock registry ─────────────────────────────────────────────────────
 //
 // A Set of open modal IDs instead of a mutable integer counter.
 // Safe under concurrent renders, SSR-compatible (Set never touches the DOM
@@ -28,7 +27,6 @@ function unlockScroll(id: string) {
   }
 }
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
 
@@ -46,7 +44,6 @@ export interface ModalProps {
   children: React.ReactNode;
 }
 
-// ─── Animations ───────────────────────────────────────────────────────────────
 
 const backdropIn = keyframes`
   from { opacity: 0; }
@@ -67,7 +64,6 @@ const dialogOut = keyframes`
 
 const ANIM_MS = 200;
 
-// ─── Width map ────────────────────────────────────────────────────────────────
 
 const sizeWidth: Record<ModalSize, string> = {
   sm: '400px',
@@ -76,7 +72,6 @@ const sizeWidth: Record<ModalSize, string> = {
   xl: '900px',
 };
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 const Backdrop = styled.div<{ $closing: boolean }>`
   position: fixed;
@@ -110,7 +105,6 @@ const DialogEl = styled.div<{ $closing: boolean; $size: ModalSize }>`
     ${ANIM_MS}ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 `;
 
-// ─── Sub-component styled ─────────────────────────────────────────────────────
 
 export const ModalHeader = styled.div`
   display: flex;
@@ -187,7 +181,6 @@ export const ModalFooter = styled.div`
   flex-shrink: 0;
 `;
 
-// ─── Close SVG ────────────────────────────────────────────────────────────────
 
 function CloseSvg() {
   return (
@@ -202,7 +195,6 @@ function CloseSvg() {
   );
 }
 
-// ─── Modal component ──────────────────────────────────────────────────────────
 
 export function Modal({
   isOpen,
@@ -335,7 +327,6 @@ Modal.Footer  = ModalFooter;
 // Re-export close button for advanced use (custom header layout)
 Modal.CloseButton = CloseButton;
 
-// ─── useModal hook ────────────────────────────────────────────────────────────
 
 export function useModal(initialOpen = false, onOpenChange?: (open: boolean) => void) {
   const [isOpen, setIsOpen] = useState(initialOpen);
@@ -358,5 +349,5 @@ export function useModal(initialOpen = false, onOpenChange?: (open: boolean) => 
       return next;
     });
   }, []);
-  return { isOpen, open, close, toggle };
+  return { isOpen, open, close, onClose: close, toggle };
 }

@@ -5,7 +5,6 @@ import {
   letterSpacing, spacing, borderWidth,
 } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type CountUpEasing = 'easeOut' | 'easeInOut' | 'linear';
 
@@ -40,7 +39,6 @@ export interface CountUpProps {
   style?: React.CSSProperties;
 }
 
-// ─── Easing functions ─────────────────────────────────────────────────────────
 
 const easings: Record<CountUpEasing, (t: number) => number> = {
   linear:    (t) => t,
@@ -48,7 +46,6 @@ const easings: Record<CountUpEasing, (t: number) => number> = {
   easeInOut: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
 };
 
-// ─── Formatter ────────────────────────────────────────────────────────────────
 
 function formatNumber(
   value: number,
@@ -62,7 +59,6 @@ function formatNumber(
   return dec !== undefined ? `${intFormatted}${decimal}${dec}` : intFormatted;
 }
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 const NumberEl = styled.span`
   font-variant-numeric: tabular-nums;
@@ -84,7 +80,6 @@ const SrOnly = styled.span`
   border: 0;
 `;
 
-// ─── StatCard — convenience wrapper used in stories ──────────────────────────
 
 export const StatCard = styled.div`
   padding: ${spacing[6]};
@@ -127,7 +122,6 @@ export const StatDelta = styled.span<{ $positive?: boolean }>`
   margin-top: ${spacing[1]};
 `;
 
-// ─── CountUp component ────────────────────────────────────────────────────────
 
 export function CountUp({
   to,

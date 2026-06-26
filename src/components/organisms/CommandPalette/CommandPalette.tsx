@@ -7,7 +7,6 @@ import {
   letterSpacing, spacing, borderWidth,
 } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface CommandItem {
   id: string;
@@ -35,7 +34,6 @@ export interface CommandPaletteProps {
   emptyMessage?: string;
 }
 
-// ─── useCommandPalette hook ───────────────────────────────────────────────────
 //
 // Manages open/close state and registers the global ⌘K / Ctrl+K shortcut.
 // Usage:
@@ -76,10 +74,9 @@ export function useCommandPalette(onOpenChange?: (open: boolean) => void) {
     return () => document.removeEventListener('keydown', handler);
   }, [toggle]);
 
-  return { isOpen, open, close, toggle };
+  return { isOpen, open, close, onClose: close, toggle };
 }
 
-// ─── Animations ───────────────────────────────────────────────────────────────
 
 const backdropIn = keyframes`
   from { opacity: 0; }
@@ -103,7 +100,6 @@ const paletteOut = keyframes`
 
 const ANIM_MS = 180;
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 const Backdrop = styled.div<{ $closing: boolean }>`
   position: fixed;
@@ -336,7 +332,6 @@ const FooterKbd = styled.kbd`
   line-height: 1.4;
 `;
 
-// ─── SVG icons ────────────────────────────────────────────────────────────────
 
 function SearchSvg() {
   return (
@@ -347,7 +342,6 @@ function SearchSvg() {
   );
 }
 
-// ─── CommandPalette component ─────────────────────────────────────────────────
 
 export function CommandPalette({
   isOpen,

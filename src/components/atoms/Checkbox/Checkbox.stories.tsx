@@ -49,7 +49,6 @@ const [checked, setChecked] = useState(false);
 export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   render: (args) => {
@@ -65,7 +64,6 @@ export const Playground: Story = {
   },
 };
 
-// ─── Sizes ────────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (
@@ -77,7 +75,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── All states ───────────────────────────────────────────────────────────────
 
 export const AllStates: Story = {
   render: () => (
@@ -92,7 +89,6 @@ export const AllStates: Story = {
   ),
 };
 
-// ─── Interactive toggle ───────────────────────────────────────────────────────
 
 export const Interactive: Story = {
   render: () => {
@@ -138,7 +134,6 @@ export const Interactive: Story = {
   },
 };
 
-// ─── In context — consent form ────────────────────────────────────────────────
 
 export const ConsentForm: Story = {
   render: () => {

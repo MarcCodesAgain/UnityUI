@@ -1,7 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 import { colors, spacing } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type SpinnerSize    = 'sm' | 'md' | 'lg' | 'xl';
 export type SpinnerVariant = 'default' | 'inverse';
@@ -15,7 +14,6 @@ export interface SpinnerProps {
   style?: React.CSSProperties;
 }
 
-// ─── Size map ─────────────────────────────────────────────────────────────────
 
 const sizeMap: Record<SpinnerSize, string> = {
   sm: spacing[4],   // 16px
@@ -31,7 +29,6 @@ const strokeMap: Record<SpinnerSize, number> = {
   xl: 5,
 };
 
-// ─── Keyframes ────────────────────────────────────────────────────────────────
 
 // 1. The whole SVG rotates at a steady pace
 const rotate = keyframes`
@@ -47,7 +44,6 @@ const arcGrow = keyframes`
   100% { stroke-dashoffset: 220; }
 `;
 
-// ─── SVG wrapper — handles rotation ──────────────────────────────────────────
 
 const Svg = styled.svg<{ $size: SpinnerSize }>`
   display: block;
@@ -60,7 +56,6 @@ const Svg = styled.svg<{ $size: SpinnerSize }>`
   `}
 `;
 
-// ─── Track — static full circle, color adapts to variant ─────────────────────
 
 const Track = styled.circle<{ $variant: SpinnerVariant }>`
   fill: none;
@@ -68,7 +63,6 @@ const Track = styled.circle<{ $variant: SpinnerVariant }>`
     $variant === 'inverse' ? 'rgba(255,255,255,0.2)' : colors.blue100};
 `;
 
-// ─── Arc — animated, Electric Blue ───────────────────────────────────────────
 
 const Arc = styled.circle<{ $variant: SpinnerVariant }>`
   fill: none;
@@ -79,7 +73,6 @@ const Arc = styled.circle<{ $variant: SpinnerVariant }>`
   animation: ${arcGrow} 1400ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Spinner({
   size = 'md',

@@ -6,7 +6,6 @@ import { Divider } from '../../atoms/Divider';
 // Context so sub-components know if they're inside a flush card
 const FlushContext = createContext(false);
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type CardVariant  = 'default' | 'outlined' | 'ghost';
 
@@ -43,7 +42,6 @@ export interface CardFooterProps {
   children: React.ReactNode;
 }
 
-// ─── Variant styles ───────────────────────────────────────────────────────────
 
 const variantStyles: Record<CardVariant, ReturnType<typeof css>> = {
   default: css`
@@ -60,7 +58,6 @@ const variantStyles: Record<CardVariant, ReturnType<typeof css>> = {
   `,
 };
 
-// ─── Styled container ─────────────────────────────────────────────────────────
 //
 // Hover micro-interaction: Electric Blue left bar grows top → bottom.
 // Same easing as Button block-reveal and Typography highlight — one system.
@@ -108,7 +105,6 @@ const StyledCard = styled.div<{
     `}
 `;
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
 
 const StyledHeader = styled.div<{ $flush: boolean }>`
   padding: ${({ $flush }) => ($flush ? '0' : spacing[6])};
@@ -125,21 +121,18 @@ const StyledFooter = styled.div<{ $flush: boolean }>`
   padding: ${({ $flush }) => ($flush ? '0' : `${spacing[4]} ${spacing[6]}`)};
 `;
 
-// ─── Card.Header ──────────────────────────────────────────────────────────────
 
 function CardHeader({ children, className, style }: CardHeaderProps) {
   const flush = useContext(FlushContext);
   return <StyledHeader $flush={flush} className={className} style={style}>{children}</StyledHeader>;
 }
 
-// ─── Card.Body ────────────────────────────────────────────────────────────────
 
 function CardBody({ children, className, style }: CardBodyProps) {
   const flush = useContext(FlushContext);
   return <StyledBody $flush={flush} className={className} style={style}>{children}</StyledBody>;
 }
 
-// ─── Card.Footer ──────────────────────────────────────────────────────────────
 
 function CardFooter({ divider = true, children, className, style }: CardFooterProps) {
   const flush = useContext(FlushContext);
@@ -151,7 +144,6 @@ function CardFooter({ divider = true, children, className, style }: CardFooterPr
   );
 }
 
-// ─── Card (compound) ──────────────────────────────────────────────────────────
 
 export function Card({
   variant = 'default',

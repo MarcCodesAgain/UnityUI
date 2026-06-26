@@ -56,7 +56,6 @@ import { SpotlightCard } from '@unityui/core';
 };
 export default meta;
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function Page({ children }: { children: React.ReactNode }) {
   return (
@@ -76,7 +75,6 @@ function Page({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Stories ──────────────────────────────────────────────────────────────────
 
 /** Move your cursor across the card */
 export const Default: StoryObj = {

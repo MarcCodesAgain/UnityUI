@@ -58,7 +58,6 @@ export const Playground: Story = {
   args: { size: 'md', variant: 'default', label: 'Loading' },
 };
 
-// ─── All sizes ────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (
@@ -71,7 +70,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── Inverse (on dark bg) ─────────────────────────────────────────────────────
 
 export const Inverse: Story = {
   render: () => (
@@ -90,7 +88,6 @@ export const Inverse: Story = {
   ),
 };
 
-// ─── In context ───────────────────────────────────────────────────────────────
 
 export const InContext: Story = {
   render: () => (

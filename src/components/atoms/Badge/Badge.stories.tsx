@@ -42,13 +42,11 @@ import { Badge } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Badge>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   args: { label: 'Badge', variant: 'default', size: 'md' },
 };
 
-// ─── All variants ─────────────────────────────────────────────────────────────
 
 export const AllVariants: Story = {
   render: () => (
@@ -61,7 +59,6 @@ export const AllVariants: Story = {
   ),
 };
 
-// ─── With dot ─────────────────────────────────────────────────────────────────
 
 export const WithDot: Story = {
   render: () => (
@@ -74,7 +71,6 @@ export const WithDot: Story = {
   ),
 };
 
-// ─── Sizes ────────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (
@@ -85,7 +81,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── In context ───────────────────────────────────────────────────────────────
 
 export const InContext: Story = {
   render: () => (

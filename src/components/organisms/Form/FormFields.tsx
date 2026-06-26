@@ -14,7 +14,6 @@ import { Checkbox } from '../../atoms/Checkbox';
 import { Radio } from '../../atoms/Radio';
 import type { FormField, FormValues } from './Form';
 
-// ─── Textarea styled pieces ───────────────────────────────────────────────────
 
 const TextareaWrapper = styled.div`
   display: flex;
@@ -63,7 +62,6 @@ const HintText = styled.span<{ $error: boolean }>`
   color: ${({ $error }) => ($error ? colors.errorDefault : colors.textSecondary)};
 `;
 
-// ─── Radio group row ──────────────────────────────────────────────────────────
 
 const Overline = styled.span`
   font-family: ${fontFamily.mono};
@@ -87,7 +85,6 @@ const RadioFieldsWrapper = styled.div`
   gap: ${spacing[5]};
 `;
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
 
 interface TextareaFieldControlProps {
   field: Extract<FormField, { type: 'textarea' }>;
@@ -156,7 +153,6 @@ export function RadioFieldControl({ field, value, error, onChange }: RadioFieldC
   );
 }
 
-// ─── Field renderer ───────────────────────────────────────────────────────────
 
 export function renderField(
   field: FormField,

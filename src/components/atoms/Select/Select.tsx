@@ -6,7 +6,6 @@ import {
 } from '../../../tokens';
 import { FieldLabel, FieldInputWrapper } from '../../shared/fieldStyles';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type SelectSize  = 'sm' | 'md' | 'lg';
 export type SelectState = 'default' | 'error' | 'success';
@@ -28,7 +27,6 @@ export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectE
   fullWidth?: boolean;
 }
 
-// ─── Size styles ──────────────────────────────────────────────────────────────
 
 const sizeStyles: Record<SelectSize, ReturnType<typeof css>> = {
   sm: css`
@@ -54,20 +52,17 @@ const chevronSizeMap: Record<SelectSize, string> = {
   lg: spacing[5],   // 20px
 };
 
-// ─── Chevron rotation animation ───────────────────────────────────────────────
 
 const rotateCW = keyframes`
   from { transform: translateY(-50%) rotate(0deg); }
   to   { transform: translateY(-50%) rotate(180deg); }
 `;
 
-// ─── Container: holds select + chevron + accent line ─────────────────────────
 
 const SelectContainer = styled.div`
   position: relative;
 `;
 
-// ─── The actual <select> ──────────────────────────────────────────────────────
 
 const StyledSelect = styled.select<{
   $size: SelectSize;
@@ -125,7 +120,6 @@ const StyledSelect = styled.select<{
   }
 `;
 
-// ─── Chevron icon ─────────────────────────────────────────────────────────────
 //
 // Positioned absolutely on the right. Uses a div wrapper so the
 // select:focus ~ div selector can trigger the rotation.
@@ -147,7 +141,6 @@ const ChevronWrapper = styled.div<{ $disabled: boolean }>`
   }
 `;
 
-// ─── Animated bottom accent line — identical to Input ────────────────────────
 
 const AccentLine = styled.span<{ $state: SelectState }>`
   position: absolute;
@@ -168,7 +161,6 @@ const AccentLine = styled.span<{ $state: SelectState }>`
   }
 `;
 
-// ─── Hint / error / success text ─────────────────────────────────────────────
 
 const HintText = styled.span<{ $state: SelectState }>`
   font-family: ${fontFamily.mono};
@@ -181,7 +173,6 @@ const HintText = styled.span<{ $state: SelectState }>`
     colors.textSecondary};
 `;
 
-// ─── Chevron SVG ─────────────────────────────────────────────────────────────
 
 function ChevronIcon({ size }: { size: string }) {
   return (
@@ -204,7 +195,6 @@ function ChevronIcon({ size }: { size: string }) {
   );
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Select({
   options,

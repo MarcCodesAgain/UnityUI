@@ -1,6 +1,5 @@
 import type { CommandItem } from './CommandPalette';
 
-// ─── Scoring ──────────────────────────────────────────────────────────────────
 //
 // Higher score = better match. Returns 0 when the item should be excluded.
 //
@@ -37,7 +36,6 @@ export function scoreItem(item: CommandItem, query: string): number {
   return 15;
 }
 
-// ─── Group builder ────────────────────────────────────────────────────────────
 
 export interface SearchGroup {
   group: string | undefined;

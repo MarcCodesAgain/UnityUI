@@ -51,7 +51,6 @@ import { Form, type FormValues } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Form>;
 
-// ─── Sign up ──────────────────────────────────────────────────────────────────
 
 export const SignUp: Story = {
   render: () => (
@@ -102,7 +101,6 @@ export const SignUp: Story = {
   ),
 };
 
-// ─── Profile ──────────────────────────────────────────────────────────────────
 
 export const ProfileEdit: Story = {
   render: () => (
@@ -172,7 +170,6 @@ export const ProfileEdit: Story = {
   ),
 };
 
-// ─── Feedback ─────────────────────────────────────────────────────────────────
 
 export const Feedback: Story = {
   render: () => (
@@ -235,7 +232,6 @@ export const Feedback: Story = {
   ),
 };
 
-// ─── Minimal — just 2 fields ──────────────────────────────────────────────────
 
 export const Minimal: Story = {
   render: () => (

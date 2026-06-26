@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { colors, spacing, fontFamily, fontWeight, fontSize, letterSpacing } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type DividerOrientation = 'horizontal' | 'vertical';
 export type DividerVariant     = 'default' | 'strong' | 'accent';
@@ -17,7 +16,6 @@ export interface DividerProps {
   style?: React.CSSProperties;
 }
 
-// ─── Token maps ───────────────────────────────────────────────────────────────
 
 const colorMap: Record<DividerVariant, string> = {
   default: colors.borderDefault,   // #DEDEDE — subtle
@@ -32,7 +30,6 @@ const spacingMap: Record<DividerSpacing, string> = {
   lg:   spacing[12],  // 48px
 };
 
-// ─── Horizontal divider ───────────────────────────────────────────────────────
 
 const HorizontalRule = styled.hr<{
   $variant: DividerVariant;
@@ -68,7 +65,6 @@ const HorizontalRule = styled.hr<{
         `}
 `;
 
-// ─── Vertical divider ─────────────────────────────────────────────────────────
 
 const VerticalRule = styled.div<{
   $variant: DividerVariant;
@@ -83,7 +79,6 @@ const VerticalRule = styled.div<{
   ${({ $variant }) => ($variant === 'strong' || $variant === 'accent') && 'width: 2px;'}
 `;
 
-// ─── Label ────────────────────────────────────────────────────────────────────
 
 const Label = styled.span`
   font-family: ${fontFamily.mono};
@@ -96,7 +91,6 @@ const Label = styled.span`
   flex-shrink: 0;
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Divider({
   orientation = 'horizontal',

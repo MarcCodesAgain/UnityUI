@@ -59,7 +59,6 @@ import { Typography } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Typography>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   args: {
@@ -69,7 +68,6 @@ export const Playground: Story = {
   },
 };
 
-// ─── Type scale ───────────────────────────────────────────────────────────────
 
 export const TypeScale: Story = {
   render: () => (
@@ -85,7 +83,6 @@ export const TypeScale: Story = {
   ),
 };
 
-// ─── Body styles ──────────────────────────────────────────────────────────────
 
 export const BodyStyles: Story = {
   render: () => (
@@ -106,7 +103,6 @@ export const BodyStyles: Story = {
   ),
 };
 
-// ─── Technical voice (mono) ───────────────────────────────────────────────────
 
 export const TechnicalVoice: Story = {
   render: () => (
@@ -126,7 +122,6 @@ export const TechnicalVoice: Story = {
   ),
 };
 
-// ─── Typographic tension ──────────────────────────────────────────────────────
 
 export const TypographicTension: Story = {
   render: () => (
@@ -146,7 +141,6 @@ export const TypographicTension: Story = {
   ),
 };
 
-// ─── Colors ───────────────────────────────────────────────────────────────────
 
 export const Colors: Story = {
   render: () => (
@@ -162,7 +156,6 @@ export const Colors: Story = {
   ),
 };
 
-// ─── Heading highlight ────────────────────────────────────────────────────────
 
 export const HeadingHighlight: Story = {
   render: () => (
@@ -184,7 +177,6 @@ export const HeadingHighlight: Story = {
   ),
 };
 
-// ─── Truncation ───────────────────────────────────────────────────────────────
 
 export const Truncation: Story = {
   render: () => (

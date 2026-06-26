@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { colors, spacing, fontFamily, fontWeight, fontSize } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type AvatarSize    = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type AvatarStatus  = 'online' | 'offline' | 'busy' | 'away';
@@ -24,7 +23,6 @@ export interface AvatarProps {
   style?: React.CSSProperties;
 }
 
-// ─── Token maps ───────────────────────────────────────────────────────────────
 
 const sizeMap: Record<AvatarSize, string> = {
   xs: spacing[6],    // 24px
@@ -57,7 +55,6 @@ const statusColor: Record<AvatarStatus, string> = {
   away:    colors.warningBright,
 };
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 const Wrapper = styled.div<{ $size: AvatarSize }>`
   position: relative;
@@ -102,7 +99,6 @@ const StatusDot = styled.span<{ $status: AvatarStatus; $size: AvatarSize }>`
   border-radius: 50%;
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Avatar({
   src,

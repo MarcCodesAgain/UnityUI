@@ -60,7 +60,6 @@ import { Card } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Card>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   args: { variant: 'default', interactive: false },
@@ -82,7 +81,6 @@ export const Playground: Story = {
   ),
 };
 
-// ─── Variants ─────────────────────────────────────────────────────────────────
 
 export const Variants: Story = {
   render: () => (
@@ -104,7 +102,6 @@ export const Variants: Story = {
   ),
 };
 
-// ─── Interactive (hover animation) ────────────────────────────────────────────
 
 export const Interactive: Story = {
   render: () => (
@@ -125,7 +122,6 @@ export const Interactive: Story = {
   ),
 };
 
-// ─── Article card ─────────────────────────────────────────────────────────────
 
 export const ArticleCard: Story = {
   render: () => (
@@ -151,7 +147,6 @@ export const ArticleCard: Story = {
   ),
 };
 
-// ─── Stat card ────────────────────────────────────────────────────────────────
 
 export const StatCards: Story = {
   render: () => (
@@ -173,7 +168,6 @@ export const StatCards: Story = {
   ),
 };
 
-// ─── Image card ───────────────────────────────────────────────────────────────
 
 export const ImageCard: Story = {
   render: () => (
@@ -228,7 +222,6 @@ export const ImageCard: Story = {
   ),
 };
 
-// ─── Profile card ─────────────────────────────────────────────────────────────
 
 export const ProfileCard: Story = {
   render: () => (

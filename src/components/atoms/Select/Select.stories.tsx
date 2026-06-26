@@ -58,7 +58,6 @@ import { Select } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Select>;
 
-// ─── Shared options ───────────────────────────────────────────────────────────
 
 const COUNTRIES = [
   { value: 'es', label: 'Spain' },
@@ -76,7 +75,6 @@ const ROLES = [
   { value: 'lead',       label: 'Tech Lead' },
 ];
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   args: {
@@ -88,7 +86,6 @@ export const Playground: Story = {
   },
 };
 
-// ─── Sizes ────────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (
@@ -100,7 +97,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── All states ───────────────────────────────────────────────────────────────
 
 export const AllStates: Story = {
   render: () => (
@@ -134,7 +130,6 @@ export const AllStates: Story = {
   ),
 };
 
-// ─── Full width ───────────────────────────────────────────────────────────────
 
 export const FullWidth: Story = {
   render: () => (
@@ -145,7 +140,6 @@ export const FullWidth: Story = {
   ),
 };
 
-// ─── In context — profile form ────────────────────────────────────────────────
 
 export const ProfileForm: Story = {
   render: () => (

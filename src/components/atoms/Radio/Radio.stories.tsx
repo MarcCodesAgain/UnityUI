@@ -52,7 +52,6 @@ import { RadioGroup } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Radio>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   render: (args) => {
@@ -68,7 +67,6 @@ export const Playground: Story = {
   },
 };
 
-// ─── Sizes ────────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (
@@ -80,7 +78,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── All states ───────────────────────────────────────────────────────────────
 
 export const AllStates: Story = {
   render: () => (
@@ -94,7 +91,6 @@ export const AllStates: Story = {
   ),
 };
 
-// ─── RadioGroup — vertical ────────────────────────────────────────────────────
 
 export const GroupVertical: Story = {
   render: () => {
@@ -116,7 +112,6 @@ export const GroupVertical: Story = {
   },
 };
 
-// ─── RadioGroup — horizontal ──────────────────────────────────────────────────
 
 export const GroupHorizontal: Story = {
   render: () => {
@@ -138,7 +133,6 @@ export const GroupHorizontal: Story = {
   },
 };
 
-// ─── RadioGroup — with error ──────────────────────────────────────────────────
 
 export const GroupWithError: Story = {
   render: () => {

@@ -36,7 +36,6 @@ Use \`DataTableSkeleton\` while data is loading.
 };
 export default meta;
 
-// ─── Sample data ──────────────────────────────────────────────────────────────
 
 interface User {
   id:         string;
@@ -63,7 +62,6 @@ const STATUS_VARIANT = {
   pending:  'outline',
 } as const;
 
-// ─── Stories ──────────────────────────────────────────────────────────────────
 
 export const Default: StoryObj = {
   render: () => (

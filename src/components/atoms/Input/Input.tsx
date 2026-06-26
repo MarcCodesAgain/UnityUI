@@ -6,7 +6,6 @@ import {
 } from '../../../tokens';
 import { FieldLabel, FieldInputWrapper } from '../../shared/fieldStyles';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export type InputSize  = 'sm' | 'md' | 'lg';
 export type InputState = 'default' | 'error' | 'success';
@@ -23,7 +22,6 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   fullWidth?: boolean;
 }
 
-// ─── Size styles ──────────────────────────────────────────────────────────────
 
 const sizeStyles: Record<InputSize, ReturnType<typeof css>> = {
   sm: css`
@@ -43,13 +41,11 @@ const sizeStyles: Record<InputSize, ReturnType<typeof css>> = {
   `,
 };
 
-// ─── Input container — holds the input + the animated bottom line ─────────────
 
 const InputContainer = styled.div`
   position: relative;
 `;
 
-// ─── The actual input ─────────────────────────────────────────────────────────
 
 const StyledInput = styled.input<{
   $size: InputSize;
@@ -105,7 +101,6 @@ const StyledInput = styled.input<{
   }
 `;
 
-// ─── Animated bottom accent line ──────────────────────────────────────────────
 //
 // Sits on top of the bottom border, starts at width 0 centered,
 // expands outward to 100% on focus — same cubic-bezier as Button & Typography.
@@ -131,7 +126,6 @@ const AccentLine = styled.span<{ $state: InputState }>`
   }
 `;
 
-// ─── Helper / error / success text ───────────────────────────────────────────
 
 const HintText = styled.span<{ $state: InputState }>`
   font-family: ${fontFamily.mono};
@@ -144,7 +138,6 @@ const HintText = styled.span<{ $state: InputState }>`
     colors.textSecondary};
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Input({
   label,

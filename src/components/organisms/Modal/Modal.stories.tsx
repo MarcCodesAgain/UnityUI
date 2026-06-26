@@ -66,7 +66,6 @@ function DeleteDialog() {
 };
 export default meta;
 
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function Page({ children }: { children: React.ReactNode }) {
   return (
@@ -86,7 +85,6 @@ function Page({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Stories ──────────────────────────────────────────────────────────────────
 
 export const Default: StoryObj = {
   parameters: { layout: 'fullscreen' },

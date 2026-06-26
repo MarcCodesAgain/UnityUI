@@ -6,7 +6,6 @@ import {
 } from '../../../tokens';
 import { HiddenInput } from '../../shared/fieldStyles';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string;
@@ -17,7 +16,6 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
   indeterminate?: boolean;
 }
 
-// ─── Size map ─────────────────────────────────────────────────────────────────
 
 const boxSize: Record<'sm' | 'md' | 'lg', string> = {
   sm: '14px',
@@ -31,7 +29,6 @@ const labelSize: Record<'sm' | 'md' | 'lg', string> = {
   lg: fontSize.lg,
 };
 
-// ─── Check draw animation ─────────────────────────────────────────────────────
 //
 // The SVG check path has a known length (~17px).
 // stroke-dashoffset goes 17 → 0, drawing the path left-to-right.
@@ -46,7 +43,6 @@ const drawDash = keyframes`
   to   { stroke-dashoffset: 0; }
 `;
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 
 const Box = styled.div<{
@@ -162,7 +158,6 @@ const HintText = styled.span<{ $error: boolean; $size: 'sm' | 'md' | 'lg' }>`
   padding-left: calc(${({ $size }) => boxSize[$size]} + ${spacing[3]});
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function Checkbox({
   label,

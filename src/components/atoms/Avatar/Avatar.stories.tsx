@@ -43,13 +43,11 @@ import { Avatar } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 export const Playground: Story = {
   args: { initials: 'ML', size: 'md' },
 };
 
-// ─── Sizes ────────────────────────────────────────────────────────────────────
 
 export const Sizes: Story = {
   render: () => (
@@ -64,7 +62,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── With image ───────────────────────────────────────────────────────────────
 
 export const WithImage: Story = {
   render: () => (
@@ -81,7 +78,6 @@ export const WithImage: Story = {
   ),
 };
 
-// ─── Status dots ──────────────────────────────────────────────────────────────
 
 export const StatusDots: Story = {
   render: () => (
@@ -96,7 +92,6 @@ export const StatusDots: Story = {
   ),
 };
 
-// ─── Fallback (no initials) ───────────────────────────────────────────────────
 
 export const Fallback: Story = {
   render: () => (
@@ -108,7 +103,6 @@ export const Fallback: Story = {
   ),
 };
 
-// ─── Team row ─────────────────────────────────────────────────────────────────
 
 export const TeamRow: Story = {
   render: () => (

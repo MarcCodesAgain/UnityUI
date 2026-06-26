@@ -5,7 +5,6 @@ import {
   letterSpacing, spacing, borderWidth,
 } from '../../../tokens';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface SpotlightCardProps {
   children: React.ReactNode;
@@ -20,7 +19,6 @@ export interface SpotlightCardProps {
   onClick?: () => void;
 }
 
-// ─── Hex → rgba helper (runs once per prop change, not per mousemove) ─────────
 //
 // Supports:
 //   '#rrggbb'  — 6-digit hex (primary format)
@@ -55,7 +53,6 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// ─── Styled ───────────────────────────────────────────────────────────────────
 
 const Wrapper = styled.div<{ $interactive: boolean }>`
   position: relative;
@@ -106,7 +103,6 @@ const Content = styled.div`
   z-index: 1;
 `;
 
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export function SpotlightCard({
   children,
@@ -188,7 +184,6 @@ export function SpotlightCard({
   );
 }
 
-// ─── Compound sub-parts ───────────────────────────────────────────────────────
 
 export const SpotlightCardHeader = styled.div`
   padding: ${spacing[5]} ${spacing[6]};

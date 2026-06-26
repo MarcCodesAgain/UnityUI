@@ -62,14 +62,12 @@ import { Button } from '@unityui/core';
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// ─── Playground ───────────────────────────────────────────────────────────────
 
 /** Tweak every prop in the Controls panel below. */
 export const Playground: Story = {
   args: { variant: 'primary', size: 'md', children: 'Button' },
 };
 
-// ─── Variants ─────────────────────────────────────────────────────────────────
 
 /** The main hierarchy: one primary, one secondary, one ghost. Use this pattern consistently. */
 export const AllVariants: Story = {
@@ -89,7 +87,6 @@ export const AllVariants: Story = {
   },
 };
 
-// ─── Sizes ────────────────────────────────────────────────────────────────────
 
 /** Height and horizontal padding scale together. */
 export const Sizes: Story = {
@@ -102,7 +99,6 @@ export const Sizes: Story = {
   ),
 };
 
-// ─── States ───────────────────────────────────────────────────────────────────
 
 /**
  * `loading` replaces the label with a spinner and blocks clicks.
@@ -124,7 +120,6 @@ export const States: Story = {
   ),
 };
 
-// ─── Full width ───────────────────────────────────────────────────────────────
 
 /** Use `fullWidth` inside forms or narrow containers. */
 export const FullWidth: Story = {
