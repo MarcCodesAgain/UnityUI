@@ -32,6 +32,22 @@ export const colors = {
   blue800: '#001D66',
   blue900: '#000F33',
 
+  // Status colors — default (text/border)
+  errorDefault:   '#D0021B',
+  successDefault: '#1A7F37',
+  warningDefault: '#F59E0B',
+
+  // Status colors — bright (icons, dots, filled chips)
+  errorBright:    '#EF4444',
+  successBright:  '#22C55E',
+  warningBright:  '#F59E0B',
+
+  // Status background tints
+  errorBg:        '#FEF2F2',
+  successBg:      '#F0FDF4',
+  warningBg:      '#FFFBEB',
+  infoBg:         '#EEF3FF',
+
   // Semantic aliases
   primary:       '#0047FF',
   textPrimary:   '#0A0A0A',

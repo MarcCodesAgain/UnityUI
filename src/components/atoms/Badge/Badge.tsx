@@ -6,13 +6,12 @@ import { colors, fontFamily, fontWeight, fontSize, letterSpacing, spacing, borde
 export type BadgeVariant = 'default' | 'primary' | 'outline' | 'ghost';
 export type BadgeSize   = 'sm' | 'md';
 
-export interface BadgeProps {
+export interface BadgeProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'children'> {
   label: string;
   variant?: BadgeVariant;
   size?: BadgeSize;
   /** Optional left dot indicator */
   dot?: boolean;
-  className?: string;
 }
 
 // ─── Variant styles ───────────────────────────────────────────────────────────
@@ -97,9 +96,11 @@ export function Badge({
   size = 'md',
   dot = false,
   className,
+  style,
+  ...props
 }: BadgeProps) {
   return (
-    <StyledBadge $variant={variant} $size={size} className={className}>
+    <StyledBadge $variant={variant} $size={size} className={className} style={style} {...props}>
       {dot && <Dot $variant={variant} aria-hidden="true" />}
       {label}
     </StyledBadge>

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, spacing } from '../../../tokens';
+import { colors, spacing, fontFamily, fontWeight, fontSize, letterSpacing } from '../../../tokens';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -14,6 +14,7 @@ export interface DividerProps {
   /** Optional label centered on the divider */
   label?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 // ─── Token maps ───────────────────────────────────────────────────────────────
@@ -85,10 +86,10 @@ const VerticalRule = styled.div<{
 // ─── Label ────────────────────────────────────────────────────────────────────
 
 const Label = styled.span`
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-family: ${fontFamily.mono};
+  font-size: ${fontSize.xs};
+  font-weight: ${fontWeight.medium};
+  letter-spacing: ${letterSpacing.wider};
   text-transform: uppercase;
   color: ${colors.textSecondary};
   white-space: nowrap;
@@ -103,6 +104,7 @@ export function Divider({
   spacing = 'md',
   label,
   className,
+  style,
 }: DividerProps) {
   if (orientation === 'vertical') {
     return (
@@ -112,6 +114,7 @@ export function Divider({
         role="separator"
         aria-orientation="vertical"
         className={className}
+        style={style}
       />
     );
   }
@@ -126,6 +129,7 @@ export function Divider({
         role="separator"
         aria-orientation="horizontal"
         className={className}
+        style={style}
       >
         <Label>{label}</Label>
       </HorizontalRule>
@@ -140,6 +144,7 @@ export function Divider({
       role="separator"
       aria-orientation="horizontal"
       className={className}
+      style={style}
     />
   );
 }

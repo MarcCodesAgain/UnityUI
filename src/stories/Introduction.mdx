@@ -1,0 +1,167 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+<div style={{ fontFamily: "'Inter', sans-serif", maxWidth: 760, margin: '0 auto', padding: '48px 24px' }}>
+
+<div style={{ marginBottom: 48 }}>
+  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#636363', marginBottom: 12 }}>
+    Swiss Minimalism Design System
+  </div>
+  <h1 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.05, margin: '0 0 20px' }}>
+    UnityUI
+  </h1>
+  <p style={{ fontSize: 18, color: '#636363', lineHeight: 1.6, margin: 0, maxWidth: 560 }}>
+    A React component library built on the principles of Swiss International Style — sharp edges,
+    precise spacing, and typography as the primary design tool.
+  </p>
+</div>
+
+---
+
+## Getting started
+
+**Install the package:**
+
+```bash
+npm install @unityui/core styled-components
+```
+
+**Wrap your app at the root:**
+
+```tsx
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles, theme } from '@unityui/core';
+
+export default function App({ children }) {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {children}
+    </ThemeProvider>
+  );
+}
+```
+
+**Import and use components:**
+
+```tsx
+import { Button, Input, Typography } from '@unityui/core';
+
+<Typography variant="h2">Welcome</Typography>
+<Input label="Email" placeholder="you@example.com" fullWidth />
+<Button variant="primary">Get started</Button>
+```
+
+---
+
+## Design principles
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 1, background: '#DEDEDE', marginBottom: 32 }}>
+  {[
+    { icon: '▪', title: 'No border-radius', desc: 'Square edges everywhere. Precision over softness.' },
+    { icon: '⊟', title: '4px grid', desc: 'Every spacing value is a multiple of 4px.' },
+    { icon: 'Aa', title: 'Two typefaces', desc: 'Inter (editorial) + JetBrains Mono (technical).' },
+    { icon: '◼', title: 'One accent', desc: 'Electric Blue #0047FF. Everything else is greyscale.' },
+  ].map(({ icon, title, desc }) => (
+    <div key={title} style={{ background: '#fff', padding: '24px 20px' }}>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, marginBottom: 12, color: '#0047FF' }}>{icon}</div>
+      <div style={{ fontWeight: 600, marginBottom: 6 }}>{title}</div>
+      <div style={{ fontSize: 14, color: '#636363', lineHeight: 1.5 }}>{desc}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+<h2 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.01em', margin: '0 0 24px' }}>Component overview</h2>
+
+export const ComponentTable = ({ title, rows }) => (
+  <div style={{ marginBottom: 32 }}>
+    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#636363', marginBottom: 12 }}>{title}</div>
+    <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Inter', sans-serif" }}>
+      <thead>
+        <tr style={{ borderBottom: '2px solid #0A0A0A' }}>
+          <th style={{ textAlign: 'left', padding: '8px 12px 8px 0', fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#636363', width: 160 }}>Component</th>
+          <th style={{ textAlign: 'left', padding: '8px 0', fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#636363' }}>What it does</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map(([name, desc]) => (
+          <tr key={name} style={{ borderBottom: '1px solid #EFEFEF' }}>
+            <td style={{ padding: '10px 12px 10px 0', fontFamily: "'JetBrains Mono', monospace", fontSize: 13, fontWeight: 600, color: '#0A0A0A', verticalAlign: 'top' }}>{name}</td>
+            <td style={{ padding: '10px 0', fontSize: 14, color: '#636363', lineHeight: 1.5, verticalAlign: 'top' }}>{desc}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
+<ComponentTable title="Atoms — base building blocks" rows={[
+  ['Button',       'Three variants (primary, secondary, ghost), three sizes, loading state'],
+  ['Typography',   'Full scale from display (72px) to caption — Electric Blue highlight animation'],
+  ['Input',        'Text field with animated accent line on focus, error/success states'],
+  ['Select',       'Native <select> with custom chevron and same accent-line behaviour as Input'],
+  ['Checkbox',     'Animated SVG check draw, indeterminate state, sm/md/lg sizes'],
+  ['Radio',        'Dot-pop spring animation on select, works standalone or as RadioGroup'],
+  ['Badge',        'default · primary · outline · ghost variants — optional dot indicator'],
+  ['Alert',        'info · success · warning · error — dismissible'],
+  ['Avatar',       'Initials or image, 5 sizes, online/offline/busy/away status dot'],
+  ['Divider',      'Horizontal/vertical separator, optional label, accent variant'],
+  ['Spinner',      'Rotating indicator, 4 sizes — respects prefers-reduced-motion'],
+  ['CountUp',      'Animated number counter — triggers on viewport entry via IntersectionObserver'],
+]} />
+
+<ComponentTable title="Molecules — composed patterns" rows={[
+  ['Card',          'Content container with Header, Body, Footer sub-components'],
+  ['DataTable',     'Sortable, selectable data table with skeleton loading state'],
+  ['SpotlightCard', 'Card with Electric Blue cursor-glow (zero React re-renders on mousemove)'],
+]} />
+
+<ComponentTable title="Organisms — full sections" rows={[
+  ['Form',           'Config-driven form: field types, built-in validation, loading state, success message'],
+  ['Modal',          'Focus-trapped dialog with enter/exit animations and scroll lock'],
+  ['CommandPalette', '⌘K fuzzy-search command palette — relevance scoring, keyboard navigation, groups'],
+]} />
+
+---
+
+## Accessibility
+
+Every component ships with accessibility built in:
+
+- **Focus management** — modals and command palette trap focus; first focusable element receives focus on open
+- **ARIA attributes** — `aria-invalid`, `aria-describedby`, `aria-sort`, `aria-live`, `role="dialog"`, `aria-modal` all wired correctly
+- **Keyboard navigation** — sortable table headers, interactive rows, radio groups, and command palette are fully keyboard-operable
+- **Reduced motion** — CSS animations are cut to `0.01ms` and JS animations (CountUp) jump to final value when `prefers-reduced-motion: reduce` is set
+- **Screen readers** — CountUp announces only the final value (not every intermediate frame) via a `aria-live="polite"` region
+
+---
+
+## Design tokens
+
+All tokens are exported and fully typed:
+
+```tsx
+import { colors, spacing, fontSize, fontWeight } from '@unityui/core';
+
+const Headline = styled.h1`
+  color: ${colors.textPrimary};
+  font-size: ${fontSize['4xl']};
+  font-weight: ${fontWeight.black};
+  margin-bottom: ${spacing[6]};
+`;
+```
+
+Browse the **Design Tokens** page in this Storybook for the full reference.
+
+---
+
+## Links
+
+- [GitHub](https://github.com/marcllopis/unityui)
+- [npm package](https://www.npmjs.com/package/@unityui/core)
+- [Full README](https://github.com/marcllopis/unityui#readme)
+
+</div>

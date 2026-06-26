@@ -40,12 +40,7 @@ export default defineConfig(({ mode }) => {
         },
       },
       sourcemap: true,
-      emitAssets: false,
-    },
-    test: {
-      globals: true,
-      environment: 'jsdom',
-      setupFiles: './src/setupTests.ts',
+      copyPublicDir: false,
     },
   };
 });

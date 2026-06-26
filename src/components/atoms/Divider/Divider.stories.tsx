@@ -5,11 +5,57 @@ const meta: Meta<typeof Divider> = {
   title: 'Atoms/Divider',
   component: Divider,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'padded',
+    docs: {
+      description: {
+        component: `
+Semantic separator rendered as \`<hr>\` (horizontal) or \`<div role="separator">\` (vertical).
+Supports three visual weights and an optional inline label.
+
+\`\`\`tsx
+import { Divider } from '@unityui/core';
+
+// Horizontal with label
+<Divider label="Or continue with" />
+
+// Accent variant between sections
+<Divider variant="accent" spacing="lg" />
+
+// Vertical inside a flex row
+<div style={{ display: 'flex', alignItems: 'center', height: '40px' }}>
+  <span>Home</span>
+  <Divider orientation="vertical" spacing="sm" />
+  <span>About</span>
+</div>
+\`\`\`
+        `,
+      },
+    },
+  },
   argTypes: {
-    orientation: { control: 'select', options: ['horizontal', 'vertical'] },
-    variant:     { control: 'select', options: ['default', 'strong', 'accent'] },
-    spacing:     { control: 'select', options: ['none', 'sm', 'md', 'lg'] },
-    label:       { control: 'text' },
+    orientation: {
+      control: 'select',
+      options: ['horizontal', 'vertical'],
+      description: 'Direction of the divider line.',
+      table: { defaultValue: { summary: 'horizontal' } },
+    },
+    variant: {
+      control: 'select',
+      options: ['default', 'strong', 'accent'],
+      description: '`default` — subtle grey · `strong` — darker grey · `accent` — Electric Blue.',
+      table: { defaultValue: { summary: 'default' } },
+    },
+    spacing: {
+      control: 'select',
+      options: ['none', 'sm', 'md', 'lg'],
+      description: 'Vertical (or horizontal for vertical orientation) margin around the line.',
+      table: { defaultValue: { summary: 'md' } },
+    },
+    label: {
+      control: 'text',
+      description: 'Optional text centred on the line. Only applies to horizontal dividers.',
+    },
   },
 };
 

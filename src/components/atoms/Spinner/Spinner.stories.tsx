@@ -6,10 +6,48 @@ const meta: Meta<typeof Spinner> = {
   title: 'Atoms/Spinner',
   component: Spinner,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: `
+Animated loading indicator. Uses a CSS keyframe rotation — no JS overhead at runtime.
+Respects \`prefers-reduced-motion\`: the animation pauses automatically for users who prefer less motion.
+
+\`\`\`tsx
+import { Spinner } from '@unityui/core';
+
+// Default
+<Spinner size="md" />
+
+// Inverse (on dark backgrounds)
+<Spinner size="lg" variant="inverse" />
+
+// With accessible label
+<Spinner label="Saving changes…" />
+\`\`\`
+        `,
+      },
+    },
+  },
   argTypes: {
-    size:    { control: 'select', options: ['sm', 'md', 'lg', 'xl'] },
-    variant: { control: 'select', options: ['default', 'inverse'] },
-    label:   { control: 'text' },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg', 'xl'],
+      description: 'Diameter of the spinner ring.',
+      table: { defaultValue: { summary: 'md' } },
+    },
+    variant: {
+      control: 'select',
+      options: ['default', 'inverse'],
+      description: '`default` — dark ring on light bg · `inverse` — white ring for dark surfaces.',
+      table: { defaultValue: { summary: 'default' } },
+    },
+    label: {
+      control: 'text',
+      description: 'Screen-reader label (visually hidden). Defaults to `"Loading"` when omitted.',
+      table: { defaultValue: { summary: 'Loading' } },
+    },
   },
 };
 

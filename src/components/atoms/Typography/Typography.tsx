@@ -53,6 +53,7 @@ export interface TypographyProps {
   /** Disable the blue sweep highlight on headings */
   noHighlight?: boolean;
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }
 
@@ -139,6 +140,7 @@ export function Typography({
   lines = 1,
   noHighlight = false,
   className,
+  style,
   children,
 }: TypographyProps) {
   const element = as ?? defaultElement[variant];
@@ -153,6 +155,7 @@ export function Typography({
       $lines={lines}
       $highlight={highlight}
       className={className}
+      style={style}
     >
       {children}
     </StyledText>

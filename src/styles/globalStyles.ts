@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -79,5 +77,18 @@ export const GlobalStyles = createGlobalStyle`
 
   :focus:not(:focus-visible) {
     outline: none;
+  }
+
+  /* Respect user motion preferences — WCAG 2.3.3 Animation from Interactions.
+     Users who set "Reduce Motion" in their OS get instant transitions instead
+     of animated ones. JS animations (rAF-based CountUp etc.) should check
+     this independently via window.matchMedia('(prefers-reduced-motion: reduce)'). */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 `;

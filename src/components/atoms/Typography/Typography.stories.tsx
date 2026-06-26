@@ -6,20 +6,53 @@ const meta: Meta<typeof Typography> = {
   title: 'Atoms/Typography',
   component: Typography,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+The complete type scale — 13 variants from \`display\` (72px / 800 weight) down to \`caption\` (12px).
+
+**Two typefaces, one rule:** headings and body use **Inter**; labels, captions, and overlines use **JetBrains Mono**.
+The \`noHighlight\` prop disables the Electric Blue underline animation that plays on mount for headings.
+
+\`\`\`tsx
+import { Typography } from '@unityui/core';
+
+<Typography variant="h1">Swiss Design System</Typography>
+<Typography variant="body" color="secondary">
+  Built on the principles of the International Typographic Style.
+</Typography>
+<Typography variant="overline" color="accent">New</Typography>
+\`\`\`
+        `,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
-      options: [
-        'display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-        'bodyLg', 'body', 'bodySm', 'label', 'caption', 'overline',
-      ],
+      options: ['display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bodyLg', 'body', 'bodySm', 'label', 'caption', 'overline'],
+      description: 'Determines font size, weight, line-height, and letter-spacing.',
+      table: { defaultValue: { summary: 'body' } },
     },
     color: {
       control: 'select',
       options: ['primary', 'secondary', 'disabled', 'inverse', 'accent'],
+      description: '`primary` = black · `secondary` = grey · `accent` = Electric Blue.',
+      table: { defaultValue: { summary: 'primary' } },
     },
-    truncate: { control: 'boolean' },
-    lines: { control: { type: 'number', min: 1, max: 6 } },
+    truncate: {
+      control: 'boolean',
+      description: 'Single-line ellipsis truncation.',
+    },
+    lines: {
+      control: { type: 'number', min: 1, max: 6 },
+      description: 'Multi-line clamp with trailing ellipsis. Requires `truncate` to be false.',
+    },
+    noHighlight: {
+      control: 'boolean',
+      description: 'Disables the Electric Blue underline animation on heading variants.',
+    },
   },
 };
 

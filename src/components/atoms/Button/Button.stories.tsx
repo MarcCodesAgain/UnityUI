@@ -5,27 +5,56 @@ const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
   component: Button,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+The primary interaction element. Three visual variants cover the full spectrum of hierarchy —
+\`primary\` for the main action, \`secondary\` for supporting actions, \`ghost\` for low-emphasis actions.
+
+Button labels use **JetBrains Mono** with wide letter-spacing — a small but intentional detail
+that signals the system has a point of view.
+
+\`\`\`tsx
+import { Button } from '@unityui/core';
+
+<Button variant="primary" size="md">Save changes</Button>
+\`\`\`
+        `,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
       options: ['primary', 'secondary', 'ghost'],
-      description: 'Visual style of the button',
+      description: '`primary` — filled Electric Blue. `secondary` — outlined. `ghost` — text only.',
+      table: { defaultValue: { summary: 'primary' } },
     },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
-      description: 'Height and padding scale',
+      description: 'Controls height and horizontal padding. `sm` = 32px, `md` = 40px, `lg` = 48px.',
+      table: { defaultValue: { summary: 'md' } },
     },
     fullWidth: {
       control: 'boolean',
-      description: 'Stretches button to full container width',
+      description: 'Stretches the button to 100% of its container width.',
+      table: { defaultValue: { summary: 'false' } },
     },
     loading: {
       control: 'boolean',
-      description: 'Shows spinner and disables interaction',
+      description: 'Shows a `<Spinner>` in place of children and disables pointer events.',
+      table: { defaultValue: { summary: 'false' } },
     },
     disabled: {
       control: 'boolean',
+      description: 'Reduces opacity and disables all interaction.',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    children: {
+      control: 'text',
+      description: 'Button label — any React node.',
     },
   },
 };
@@ -33,50 +62,52 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// ─── Base stories ─────────────────────────────────────────────────────────────
+// ─── Playground ───────────────────────────────────────────────────────────────
 
-export const Primary: Story = {
+/** Tweak every prop in the Controls panel below. */
+export const Playground: Story = {
   args: { variant: 'primary', size: 'md', children: 'Button' },
 };
 
-export const Secondary: Story = {
-  args: { variant: 'secondary', size: 'md', children: 'Button' },
-};
+// ─── Variants ─────────────────────────────────────────────────────────────────
 
-export const Ghost: Story = {
-  args: { variant: 'ghost', size: 'md', children: 'Button' },
-};
-
-// ─── Sizes ────────────────────────────────────────────────────────────────────
-
-export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-    </div>
-  ),
-};
-
-// ─── All variants ─────────────────────────────────────────────────────────────
-
+/** The main hierarchy: one primary, one secondary, one ghost. Use this pattern consistently. */
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       {(['sm', 'md', 'lg'] as const).map((size) => (
         <div key={size} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <Button variant="primary" size={size}>Primary</Button>
+          <Button variant="primary"   size={size}>Primary</Button>
           <Button variant="secondary" size={size}>Secondary</Button>
-          <Button variant="ghost" size={size}>Ghost</Button>
+          <Button variant="ghost"     size={size}>Ghost</Button>
         </div>
       ))}
+    </div>
+  ),
+  parameters: {
+    docs: { description: { story: 'All three variants across all three sizes.' } },
+  },
+};
+
+// ─── Sizes ────────────────────────────────────────────────────────────────────
+
+/** Height and horizontal padding scale together. */
+export const Sizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <Button size="sm">Small — 32px</Button>
+      <Button size="md">Medium — 40px</Button>
+      <Button size="lg">Large — 48px</Button>
     </div>
   ),
 };
 
 // ─── States ───────────────────────────────────────────────────────────────────
 
+/**
+ * `loading` replaces the label with a spinner and blocks clicks.
+ * `disabled` reduces opacity and removes pointer events.
+ */
 export const States: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -95,12 +126,13 @@ export const States: Story = {
 
 // ─── Full width ───────────────────────────────────────────────────────────────
 
+/** Use `fullWidth` inside forms or narrow containers. */
 export const FullWidth: Story = {
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxWidth: '400px' }}>
-      <Button variant="primary" fullWidth>Primary full width</Button>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', maxWidth: '400px' }}>
+      <Button variant="primary"   fullWidth>Primary full width</Button>
       <Button variant="secondary" fullWidth>Secondary full width</Button>
-      <Button variant="ghost" fullWidth>Ghost full width</Button>
+      <Button variant="ghost"     fullWidth>Ghost full width</Button>
     </div>
   ),
 };

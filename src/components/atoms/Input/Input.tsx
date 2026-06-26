@@ -4,6 +4,7 @@ import {
   colors, fontFamily, fontWeight, fontSize,
   letterSpacing, spacing, borderWidth,
 } from '../../../tokens';
+import { FieldLabel, FieldInputWrapper } from '../../shared/fieldStyles';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -42,27 +43,6 @@ const sizeStyles: Record<InputSize, ReturnType<typeof css>> = {
   `,
 };
 
-// ─── Wrapper ──────────────────────────────────────────────────────────────────
-
-const Wrapper = styled.div<{ $fullWidth: boolean }>`
-  display: inline-flex;
-  flex-direction: column;
-  gap: ${spacing[2]};
-  ${({ $fullWidth }) => $fullWidth && 'width: 100%;'}
-`;
-
-// ─── Label ────────────────────────────────────────────────────────────────────
-
-const StyledLabel = styled.label<{ $disabled: boolean }>`
-  font-family: ${fontFamily.mono};
-  font-size: ${fontSize.xs};
-  font-weight: ${fontWeight.semibold};
-  letter-spacing: ${letterSpacing.widest};
-  text-transform: uppercase;
-  color: ${({ $disabled }) => $disabled ? colors.textDisabled : colors.textSecondary};
-  transition: color 180ms ease;
-`;
-
 // ─── Input container — holds the input + the animated bottom line ─────────────
 
 const InputContainer = styled.div`
@@ -77,7 +57,7 @@ const StyledInput = styled.input<{
 }>`
   /* Reset */
   appearance: none;
-  outline: none;
+  outline: none;           /* removed by :focus-visible below */
   width: 100%;
   display: block;
 
@@ -89,20 +69,26 @@ const StyledInput = styled.input<{
   /* Swiss: no radius, 1px border all sides */
   border-radius: 0;
   border: ${borderWidth[1]} solid ${({ $state }) =>
-    $state === 'error'   ? '#D0021B' :
-    $state === 'success' ? '#1A7F37' :
+    $state === 'error'   ? colors.errorDefault :
+    $state === 'success' ? colors.successDefault :
     colors.borderDefault};
 
   transition: border-color 180ms ease, background-color 180ms ease;
 
   ${({ $size }) => sizeStyles[$size]}
 
-  /* Focus — border flips to Electric Blue, no outline */
+  /* Focus — border flips to Electric Blue */
   &:focus {
     border-color: ${({ $state }) =>
-      $state === 'error'   ? '#D0021B' :
-      $state === 'success' ? '#1A7F37' :
+      $state === 'error'   ? colors.errorDefault :
+      $state === 'success' ? colors.successDefault :
       colors.primary};
+  }
+
+  /* Keyboard focus ring — WCAG 2.4.7 Focus Visible */
+  &:focus-visible {
+    outline: 2px solid ${colors.borderFocus};
+    outline-offset: 2px;
   }
 
   /* Disabled */
@@ -133,8 +119,8 @@ const AccentLine = styled.span<{ $state: InputState }>`
   height: ${borderWidth[2]};
   width: 0%;
   background-color: ${({ $state }) =>
-    $state === 'error'   ? '#D0021B' :
-    $state === 'success' ? '#1A7F37' :
+    $state === 'error'   ? colors.errorDefault :
+    $state === 'success' ? colors.successDefault :
     colors.primary};
   transition: width 280ms cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
@@ -153,8 +139,8 @@ const HintText = styled.span<{ $state: InputState }>`
   font-weight: ${fontWeight.regular};
   letter-spacing: ${letterSpacing.normal};
   color: ${({ $state }) =>
-    $state === 'error'   ? '#D0021B' :
-    $state === 'success' ? '#1A7F37' :
+    $state === 'error'   ? colors.errorDefault :
+    $state === 'success' ? colors.successDefault :
     colors.textSecondary};
 `;
 
@@ -182,11 +168,11 @@ export function Input({
   const message = error ?? success ?? hint;
 
   return (
-    <Wrapper $fullWidth={fullWidth}>
+    <FieldInputWrapper $fullWidth={fullWidth}>
       {label && (
-        <StyledLabel htmlFor={id} $disabled={!!disabled}>
+        <FieldLabel htmlFor={id} $disabled={!!disabled}>
           {label}
-        </StyledLabel>
+        </FieldLabel>
       )}
 
       <InputContainer>
@@ -210,6 +196,6 @@ export function Input({
           {message}
         </HintText>
       )}
-    </Wrapper>
+    </FieldInputWrapper>
   );
 }

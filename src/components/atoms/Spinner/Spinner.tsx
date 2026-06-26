@@ -12,6 +12,7 @@ export interface SpinnerProps {
   /** Accessible label for screen readers */
   label?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 // ─── Size map ─────────────────────────────────────────────────────────────────
@@ -59,11 +60,12 @@ const Svg = styled.svg<{ $size: SpinnerSize }>`
   `}
 `;
 
-// ─── Track — static full circle in blue50 ────────────────────────────────────
+// ─── Track — static full circle, color adapts to variant ─────────────────────
 
-const Track = styled.circle`
+const Track = styled.circle<{ $variant: SpinnerVariant }>`
   fill: none;
-  stroke: ${colors.blue100};
+  stroke: ${({ $variant }) =>
+    $variant === 'inverse' ? 'rgba(255,255,255,0.2)' : colors.blue100};
 `;
 
 // ─── Arc — animated, Electric Blue ───────────────────────────────────────────
@@ -84,6 +86,7 @@ export function Spinner({
   variant = 'default',
   label = 'Loading',
   className,
+  style,
 }: SpinnerProps) {
   const strokeWidth = strokeMap[size];
   const r  = 50 - strokeWidth / 2; // radius stays inside the viewBox
@@ -96,8 +99,10 @@ export function Spinner({
       role="status"
       aria-label={label}
       className={className}
+      style={style}
     >
       <Track
+        $variant={variant}
         cx="50" cy="50" r={r}
         strokeWidth={strokeWidth}
       />

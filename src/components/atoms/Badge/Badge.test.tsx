@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { describe, it, expect } from 'vitest';
 import { theme } from '../../../styles/theme';
@@ -14,14 +14,15 @@ describe('Badge', () => {
   });
 
   it('renders dot when dot prop is true', () => {
-    wrap(<Badge label="Live" dot />);
-    const dot = document.querySelector('[aria-hidden="true"]');
+    const { container } = wrap(<Badge label="Live" dot />);
+    const dot = within(container).queryAllByRole('presentation').at(0)
+      ?? container.querySelector('[aria-hidden="true"]');
     expect(dot).toBeInTheDocument();
   });
 
   it('does not render dot by default', () => {
-    wrap(<Badge label="Live" />);
-    const dot = document.querySelector('[aria-hidden="true"]');
+    const { container } = wrap(<Badge label="Live" />);
+    const dot = container.querySelector('[aria-hidden="true"]');
     expect(dot).not.toBeInTheDocument();
   });
 

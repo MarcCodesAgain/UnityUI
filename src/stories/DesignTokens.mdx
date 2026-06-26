@@ -1,0 +1,223 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Design Tokens" />
+
+export const Swatch = ({ color, name, value }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '8px 0', borderBottom: '1px solid #EFEFEF' }}>
+    <div style={{ width: 36, height: 36, background: color, border: '1px solid #DEDEDE', flexShrink: 0 }} />
+    <div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, fontWeight: 600 }}>{name}</div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#636363', marginTop: 2 }}>{value}</div>
+    </div>
+  </div>
+);
+
+export const SpacingRow = ({ token, px }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '10px 0', borderBottom: '1px solid #EFEFEF' }}>
+    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, width: 80, color: '#636363' }}>spacing[{token}]</div>
+    <div style={{ background: '#0047FF', height: 12, width: px, flexShrink: 0 }} />
+    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#636363' }}>{px}px</div>
+  </div>
+);
+
+<div style={{ fontFamily: "'Inter', sans-serif", maxWidth: 760, margin: '0 auto', padding: '48px 24px' }}>
+
+<h1 style={{ fontSize: 36, fontWeight: 800, letterSpacing: '-0.02em', marginBottom: 8 }}>Design Tokens</h1>
+<p style={{ color: '#636363', fontSize: 16, marginBottom: 48, lineHeight: 1.6 }}>
+  Every visual value in UnityUI — color, space, type — is a named token. Import and use them directly,
+  or access them through the styled-components theme.
+</p>
+
+```tsx
+import { colors, spacing, fontSize, fontWeight, fontFamily } from '@unityui/core';
+// or via ThemeProvider:
+// const { colors, spacing } = useTheme();
+```
+
+---
+
+## Colors
+
+### Brand
+
+<Swatch color="#0047FF" name="colors.primary" value="#0047FF — Electric Blue, the single accent" />
+<Swatch color="#0A0A0A" name="colors.black" value="#0A0A0A" />
+<Swatch color="#FFFFFF" name="colors.white" value="#FFFFFF" />
+
+### Grey scale
+
+<Swatch color="#FAFAFA" name="colors.grey50"  value="#FAFAFA" />
+<Swatch color="#EFEFEF" name="colors.grey100" value="#EFEFEF" />
+<Swatch color="#DEDEDE" name="colors.grey200" value="#DEDEDE" />
+<Swatch color="#CACACA" name="colors.grey300" value="#CACACA" />
+<Swatch color="#ABABAB" name="colors.grey400" value="#ABABAB" />
+<Swatch color="#8C8C8C" name="colors.grey500" value="#8C8C8C" />
+<Swatch color="#636363" name="colors.grey600" value="#636363" />
+<Swatch color="#3D3D3D" name="colors.grey700" value="#3D3D3D" />
+<Swatch color="#1F1F1F" name="colors.grey800" value="#1F1F1F" />
+<Swatch color="#0A0A0A" name="colors.grey900" value="#0A0A0A" />
+
+### Semantic text & surface
+
+<Swatch color="#0A0A0A" name="colors.textPrimary"   value="#0A0A0A" />
+<Swatch color="#636363" name="colors.textSecondary" value="#636363" />
+<Swatch color="#ABABAB" name="colors.textDisabled"  value="#ABABAB" />
+<Swatch color="#FFFFFF" name="colors.textInverse"   value="#FFFFFF" />
+<Swatch color="#FFFFFF" name="colors.bgPage"        value="#FFFFFF — page background" />
+<Swatch color="#F7F7F7" name="colors.bgSurface"     value="#F7F7F7 — card / elevated surfaces" />
+<Swatch color="#DEDEDE" name="colors.borderDefault" value="#DEDEDE" />
+<Swatch color="#0A0A0A" name="colors.borderFocus"   value="#0A0A0A — keyboard focus ring" />
+
+### State colors
+
+<Swatch color="#E63329" name="colors.errorDefault"   value="#E63329" />
+<Swatch color="#FEE2E2" name="colors.errorLight"     value="#FEE2E2" />
+<Swatch color="#16A34A" name="colors.successDefault" value="#16A34A" />
+<Swatch color="#DCFCE7" name="colors.successLight"   value="#DCFCE7" />
+<Swatch color="#D97706" name="colors.warningDefault" value="#D97706" />
+<Swatch color="#FEF3C7" name="colors.warningLight"   value="#FEF3C7" />
+
+### Blue scale (selection / focus states)
+
+<Swatch color="#EFF4FF" name="colors.blue50"  value="#EFF4FF" />
+<Swatch color="#DBEAFE" name="colors.blue100" value="#DBEAFE" />
+<Swatch color="#93C5FD" name="colors.blue300" value="#93C5FD" />
+<Swatch color="#0047FF" name="colors.blue500" value="#0047FF — same as colors.primary" />
+
+---
+
+## Spacing
+
+Based on a **4px grid**. Every component uses values from this scale.
+
+<SpacingRow token="1"  px={4}  />
+<SpacingRow token="2"  px={8}  />
+<SpacingRow token="3"  px={12} />
+<SpacingRow token="4"  px={16} />
+<SpacingRow token="5"  px={20} />
+<SpacingRow token="6"  px={24} />
+<SpacingRow token="7"  px={28} />
+<SpacingRow token="8"  px={32} />
+<SpacingRow token="9"  px={36} />
+<SpacingRow token="10" px={40} />
+<SpacingRow token="11" px={44} />
+<SpacingRow token="12" px={48} />
+<SpacingRow token="14" px={56} />
+<SpacingRow token="16" px={64} />
+<SpacingRow token="20" px={80} />
+<SpacingRow token="24" px={96} />
+
+---
+
+## Typography
+
+UnityUI uses two typefaces:
+
+- **Inter** — the editorial voice. Headings, body text, buttons.
+- **JetBrains Mono** — the technical voice. Labels, badges, overlines, form field labels, code.
+
+### Font families
+
+```tsx
+fontFamily.base   // 'Inter, system-ui, -apple-system, sans-serif'
+fontFamily.mono   // 'JetBrains Mono, ui-monospace, monospace'
+```
+
+### Font sizes
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+  {[
+    { token: 'xs',   px: 12, sample: 'Label / Caption / Overline' },
+    { token: 'sm',   px: 14, sample: 'Small body text, table cells' },
+    { token: 'base', px: 16, sample: 'Default body text' },
+    { token: 'lg',   px: 18, sample: 'Large body, h6' },
+    { token: 'xl',   px: 20, sample: 'h5' },
+    { token: '2xl',  px: 24, sample: 'h4' },
+    { token: '3xl',  px: 30, sample: 'h3' },
+    { token: '4xl',  px: 36, sample: 'h2, stat values' },
+    { token: '5xl',  px: 48, sample: 'h1' },
+    { token: '6xl',  px: 60, sample: 'Large display' },
+    { token: '7xl',  px: 72, sample: 'Display' },
+  ].map(({ token, px, sample }) => (
+    <div key={token} style={{ display: 'flex', alignItems: 'baseline', gap: 20, padding: '6px 0', borderBottom: '1px solid #EFEFEF' }}>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#636363', width: 120, flexShrink: 0 }}>
+        fontSize['{token}']
+      </div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: '#ABABAB', width: 40, flexShrink: 0 }}>
+        {px}px
+      </div>
+      <div style={{ fontSize: px > 32 ? 24 : px, fontWeight: px >= 36 ? 700 : 400, lineHeight: 1.2 }}>
+        {sample}
+      </div>
+    </div>
+  ))}
+</div>
+
+### Font weights
+
+```tsx
+fontWeight.light      // 300
+fontWeight.regular    // 400
+fontWeight.medium     // 500
+fontWeight.semibold   // 600
+fontWeight.bold       // 700
+fontWeight.black      // 800   — used for h1/h2 and Display
+```
+
+### Letter spacing
+
+```tsx
+letterSpacing.tighter  // -0.04em   — Display
+letterSpacing.tight    // -0.02em   — h1, h2, h3
+letterSpacing.normal   //  0em
+letterSpacing.wide     //  0.05em
+letterSpacing.wider    //  0.08em
+letterSpacing.widest   //  0.14em   — overlines, labels (UPPERCASE)
+```
+
+---
+
+## Borders
+
+```tsx
+import { borderWidth } from '@unityui/core';
+
+borderWidth[1]   // '1px'  — inputs, cards, dividers, table cells
+borderWidth[2]   // '2px'  — accent lines on focus, sort indicator
+```
+
+UnityUI has **no border-radius tokens by default** — all corners are square (`border-radius: 0`). This is intentional and central to the Swiss aesthetic.
+
+---
+
+## Usage with styled-components
+
+```tsx
+import styled from 'styled-components';
+import { colors, spacing, fontSize, fontWeight, fontFamily, borderWidth } from '@unityui/core';
+
+const MetricCard = styled.div`
+  background: ${colors.bgPage};
+  border: ${borderWidth[1]} solid ${colors.borderDefault};
+  padding: ${spacing[6]};
+`;
+
+const MetricValue = styled.span`
+  font-family: ${fontFamily.mono};
+  font-size: ${fontSize['4xl']};
+  font-weight: ${fontWeight.semibold};
+  color: ${colors.textPrimary};
+  letter-spacing: -0.02em;
+`;
+
+const MetricLabel = styled.span`
+  font-family: ${fontFamily.mono};
+  font-size: ${fontSize.xs};
+  font-weight: ${fontWeight.semibold};
+  letter-spacing: ${letterSpacing.widest};
+  text-transform: uppercase;
+  color: ${colors.textSecondary};
+`;
+```
+
+</div>

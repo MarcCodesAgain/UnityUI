@@ -5,10 +5,30 @@ const meta: Meta<typeof Badge> = {
   title: 'Atoms/Badge',
   component: Badge,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Small label for status, metadata, or categorisation. Uses **JetBrains Mono** in uppercase
+to maintain the technical voice. Add a \`dot\` indicator for live/online states.
+
+\`\`\`tsx
+import { Badge } from '@unityui/core';
+
+<Badge label="Published" variant="primary" dot />
+<Badge label="Draft"     variant="outline" />
+<Badge label="v0.1.0"    variant="default" />
+\`\`\`
+        `,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
       options: ['default', 'primary', 'outline', 'ghost'],
+      description: '`default` — grey fill · `primary` — Electric Blue · `outline` — bordered · `ghost` — transparent.',
+      table: { defaultValue: { summary: 'default' } },
     },
     size: {
       control: 'select',
