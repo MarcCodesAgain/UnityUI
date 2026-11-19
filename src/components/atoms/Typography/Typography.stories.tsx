@@ -16,7 +16,7 @@ The complete type scale — 13 variants from \`display\` (72px / 800 weight) dow
 The \`noHighlight\` prop disables the Electric Blue underline animation that plays on mount for headings.
 
 \`\`\`tsx
-import { Typography } from '@unityui/core';
+import { Typography } from '@marcllopis/unityui';
 
 <Typography variant="h1">Swiss Design System</Typography>
 <Typography variant="body" color="secondary">

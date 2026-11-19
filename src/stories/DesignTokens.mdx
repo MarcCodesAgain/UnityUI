@@ -29,7 +29,7 @@ export const SpacingRow = ({ token, px }) => (
 </p>
 
 ```tsx
-import { colors, spacing, fontSize, fontWeight, fontFamily } from '@unityui/core';
+import { colors, spacing, fontSize, fontWeight, fontFamily } from '@marcllopis/unityui';
 // or via ThemeProvider:
 // const { colors, spacing } = useTheme();
 ```
@@ -180,7 +180,7 @@ letterSpacing.widest   //  0.14em   — overlines, labels (UPPERCASE)
 ## Borders
 
 ```tsx
-import { borderWidth } from '@unityui/core';
+import { borderWidth } from '@marcllopis/unityui';
 
 borderWidth[1]   // '1px'  — inputs, cards, dividers, table cells
 borderWidth[2]   // '2px'  — accent lines on focus, sort indicator
@@ -194,7 +194,7 @@ UnityUI has **no border-radius tokens by default** — all corners are square (`
 
 ```tsx
 import styled from 'styled-components';
-import { colors, spacing, fontSize, fontWeight, fontFamily, borderWidth } from '@unityui/core';
+import { colors, spacing, fontSize, fontWeight, fontFamily, borderWidth } from '@marcllopis/unityui';
 
 const MetricCard = styled.div`
   background: ${colors.bgPage};

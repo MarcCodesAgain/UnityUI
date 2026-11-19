@@ -19,7 +19,7 @@ gradient follows it — creating a spotlight illusion.
 zero re-renders per mouse event.
 
 \`\`\`tsx
-import { SpotlightCard } from '@unityui/core';
+import { SpotlightCard } from '@marcllopis/unityui';
 
 <SpotlightCard glowColor="#0047FF" glowIntensity={0.12} onClick={() => navigate('/features')}>
   <SpotlightCard.Body>

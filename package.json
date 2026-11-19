@@ -1,11 +1,26 @@
 {
   "name": "@marcllopis/unityui",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Swiss Minimalism Design System — React + TypeScript + Styled Components",
   "author": "Marc Llopis",
   "license": "MIT",
   "type": "module",
-  "repository": "https://github.com/MarcCodesAgain/UnityUI",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcCodesAgain/UnityUI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarcCodesAgain/UnityUI/issues"
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "component-library",
+    "styled-components",
+    "typescript",
+    "swiss-design",
+    "ui"
+  ],
   "homepage": "https://6a3ecef7019c1a5d67a81d71-irgzwxjhri.chromatic.com/",
   "private": false,
   "exports": {
@@ -33,7 +48,7 @@
     "build-storybook": "storybook build",
     "lint": "oxlint",
     "prepublishOnly": "npm run build",
-    "chromatic": "npx chromatic --project-token=chpt_d4e508e12134218"
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

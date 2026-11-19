@@ -18,7 +18,7 @@ Three visual variants, an interactive hover state (Electric Blue bottom bar), an
 that removes internal padding for full-bleed content.
 
 \`\`\`tsx
-import { Card } from '@unityui/core';
+import { Card } from '@marcllopis/unityui';
 
 <Card variant="default" interactive onClick={() => router.push('/details')}>
   <Card.Header>

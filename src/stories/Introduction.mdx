@@ -24,14 +24,14 @@ import { Meta } from '@storybook/addon-docs/blocks';
 **Install the package:**
 
 ```bash
-npm install @unityui/core styled-components
+npm install @marcllopis/unityui styled-components
 ```
 
 **Wrap your app at the root:**
 
 ```tsx
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, theme } from '@unityui/core';
+import { GlobalStyles, theme } from '@marcllopis/unityui';
 
 export default function App({ children }) {
   return (
@@ -46,7 +46,7 @@ export default function App({ children }) {
 **Import and use components:**
 
 ```tsx
-import { Button, Input, Typography } from '@unityui/core';
+import { Button, Input, Typography } from '@marcllopis/unityui';
 
 <Typography variant="h2">Welcome</Typography>
 <Input label="Email" placeholder="you@example.com" fullWidth />
@@ -144,7 +144,7 @@ Every component ships with accessibility built in:
 All tokens are exported and fully typed:
 
 ```tsx
-import { colors, spacing, fontSize, fontWeight } from '@unityui/core';
+import { colors, spacing, fontSize, fontWeight } from '@marcllopis/unityui';
 
 const Headline = styled.h1`
   color: ${colors.textPrimary};
@@ -161,7 +161,7 @@ Browse the **Design Tokens** page in this Storybook for the full reference.
 ## Links
 
 - [GitHub](https://github.com/marcllopis/unityui)
-- [npm package](https://www.npmjs.com/package/@unityui/core)
+- [npm package](https://www.npmjs.com/package/@marcllopis/unityui)
 - [Full README](https://github.com/marcllopis/unityui#readme)
 
 </div>

@@ -16,7 +16,7 @@ Button labels use **JetBrains Mono** with wide letter-spacing — a small but in
 that signals the system has a point of view.
 
 \`\`\`tsx
-import { Button } from '@unityui/core';
+import { Button } from '@marcllopis/unityui';
 
 <Button variant="primary" size="md">Save changes</Button>
 \`\`\`

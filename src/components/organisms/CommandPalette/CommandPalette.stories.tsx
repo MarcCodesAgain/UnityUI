@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { CommandPalette, useCommandPalette } from './CommandPalette';
+import { CommandPalette, useCommandPalette } from '.';
 import type { CommandItem } from './CommandPalette';
 
 const meta: Meta<typeof CommandPalette> = {
@@ -18,7 +18,7 @@ The \`useCommandPalette()\` hook registers the \`⌘K\` / \`Ctrl+K\` global shor
 Fuzzy scoring: exact match → prefix → contains → keyword → description → character-sequence.
 
 \`\`\`tsx
-import { CommandPalette, useCommandPalette, type CommandItem } from '@unityui/core';
+import { CommandPalette, useCommandPalette, type CommandItem } from '@marcllopis/unityui';
 
 const COMMANDS: CommandItem[] = [
   {
@@ -177,7 +177,7 @@ const ITEMS: CommandItem[] = [
   {
     id: 'help-github',
     label: 'View on GitHub',
-    description: '@unityui/core source code',
+    description: '@marcllopis/unityui source code',
     icon: '⬡',
     group: 'Help',
     keywords: ['source', 'code', 'repo'],
@@ -216,7 +216,7 @@ function PaletteWrapper({ children }: { children: React.ReactNode }) {
 
 
 export const Default: StoryObj = {
-  render: () => {
+  render: function Render() {
     const cmd = useCommandPalette();
     return (
       <PaletteWrapper>
@@ -245,7 +245,7 @@ export const Default: StoryObj = {
 };
 
 export const OpenByDefault: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [isOpen, setIsOpen] = useState(true);
     return (
       <PaletteWrapper>
@@ -274,7 +274,7 @@ export const OpenByDefault: StoryObj = {
 };
 
 export const EmptyState: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [isOpen, setIsOpen] = useState(true);
     return (
       <PaletteWrapper>
@@ -290,7 +290,7 @@ export const EmptyState: StoryObj = {
 };
 
 export const FewItems: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [isOpen, setIsOpen] = useState(true);
     const items: CommandItem[] = [
       { id: '1', label: 'New File',    icon: '✦', shortcut: ['⌘', 'N'], onSelect: () => {} },

@@ -15,7 +15,7 @@ Feedback banner for system messages. Four semantic variants with a coloured left
 Supports an optional title, rich children, and a dismiss button.
 
 \`\`\`tsx
-import { Alert } from '@unityui/core';
+import { Alert } from '@marcllopis/unityui';
 
 <Alert variant="success" title="Saved" onDismiss={() => setVisible(false)}>
   Your changes have been saved successfully.
@@ -92,7 +92,7 @@ export const WithoutTitle: Story = {
 
 
 export const Dismissible: Story = {
-  render: () => {
+  render: function Render() {
     const [alerts, setAlerts] = useState([
       { id: 1, variant: 'info'    as const, title: 'Update available',   msg: 'UnityUI v0.2.0 is ready to install.' },
       { id: 2, variant: 'success' as const, title: 'Deploy complete',    msg: 'Your app is live at unityui.dev.' },
@@ -124,7 +124,7 @@ export const Dismissible: Story = {
 
 
 export const FormFeedback: Story = {
-  render: () => {
+  render: function Render() {
     const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
     return (

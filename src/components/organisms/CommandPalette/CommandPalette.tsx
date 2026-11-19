@@ -34,48 +34,6 @@ export interface CommandPaletteProps {
   emptyMessage?: string;
 }
 
-//
-// Manages open/close state and registers the global ⌘K / Ctrl+K shortcut.
-// Usage:
-//   const cmd = useCommandPalette();
-//   <CommandPalette {...cmd} items={ITEMS} />
-
-export function useCommandPalette(onOpenChange?: (open: boolean) => void) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const onOpenChangeRef = useRef(onOpenChange);
-  useEffect(() => { onOpenChangeRef.current = onOpenChange; }, [onOpenChange]);
-
-  const open = useCallback(() => {
-    setIsOpen(true);
-    onOpenChangeRef.current?.(true);
-  }, []);
-  const close = useCallback(() => {
-    setIsOpen(false);
-    onOpenChangeRef.current?.(false);
-  }, []);
-  const toggle = useCallback(() => {
-    setIsOpen((v) => {
-      const next = !v;
-      onOpenChangeRef.current?.(next);
-      return next;
-    });
-  }, []);
-
-  // Global ⌘K / Ctrl+K
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-        e.preventDefault();
-        toggle();
-      }
-    };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
-  }, [toggle]);
-
-  return { isOpen, open, close, onClose: close, toggle };
-}
 
 
 const backdropIn = keyframes`

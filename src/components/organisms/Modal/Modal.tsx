@@ -326,28 +326,3 @@ Modal.Footer  = ModalFooter;
 
 // Re-export close button for advanced use (custom header layout)
 Modal.CloseButton = CloseButton;
-
-
-export function useModal(initialOpen = false, onOpenChange?: (open: boolean) => void) {
-  const [isOpen, setIsOpen] = useState(initialOpen);
-
-  const onOpenChangeRef = useRef(onOpenChange);
-  useEffect(() => { onOpenChangeRef.current = onOpenChange; }, [onOpenChange]);
-
-  const open = useCallback(() => {
-    setIsOpen(true);
-    onOpenChangeRef.current?.(true);
-  }, []);
-  const close = useCallback(() => {
-    setIsOpen(false);
-    onOpenChangeRef.current?.(false);
-  }, []);
-  const toggle = useCallback(() => {
-    setIsOpen((v) => {
-      const next = !v;
-      onOpenChangeRef.current?.(next);
-      return next;
-    });
-  }, []);
-  return { isOpen, open, close, onClose: close, toggle };
-}

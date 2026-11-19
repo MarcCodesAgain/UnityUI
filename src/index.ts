@@ -2,7 +2,7 @@
  * UnityUI — Public API
  *
  * Usage:
- *   import { Button, theme, colors } from '@unityui/core'
+ *   import { Button, theme, colors } from '@marcllopis/unityui'
  */
 
 // Tokens

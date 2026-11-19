@@ -1,4 +1,5 @@
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { StrictMode } from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { describe, it, expect, vi } from 'vitest';
 import { theme } from '../../../styles/theme';
@@ -183,6 +184,23 @@ describe('DataTable selection', () => {
     const rowCheckboxes = screen.getAllByRole('checkbox').slice(1); // skip header
     fireEvent.click(rowCheckboxes[0]);
     expect(onSelectionChange).toHaveBeenCalledWith([DATA[0]]);
+  });
+
+  it('notifies each selection change exactly once, even in StrictMode', () => {
+    const onSelectionChange = vi.fn();
+    render(
+      <StrictMode>
+        <ThemeProvider theme={theme}>
+          <DataTable columns={COLUMNS} data={DATA} rowKey="id" selectable onSelectionChange={onSelectionChange} />
+        </ThemeProvider>
+      </StrictMode>,
+    );
+    const [header, first, second] = screen.getAllByRole('checkbox');
+    fireEvent.click(first);
+    fireEvent.click(second);
+    fireEvent.click(first);
+    fireEvent.click(header);
+    expect(onSelectionChange.mock.calls).toEqual([[[DATA[0]]], [[DATA[0], DATA[1]]], [[DATA[1]]], [DATA]]);
   });
 
   it('selects all rows via header checkbox', () => {

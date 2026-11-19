@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { theme } from '../../../styles/theme';
@@ -8,6 +8,7 @@ const wrap = (ui: React.ReactElement) =>
   render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);
 
 let observerCallback: IntersectionObserverCallback | null = null;
+let observedElement: Element | null = null;
 
 beforeEach(() => {
   vi.useFakeTimers();
@@ -46,7 +47,7 @@ beforeEach(() => {
       constructor(cb: IntersectionObserverCallback) {
         observerCallback = cb;
       }
-      observe    = vi.fn();
+      observe    = vi.fn((el: Element) => { observedElement = el; });
       disconnect = vi.fn();
       unobserve  = vi.fn();
     },
@@ -57,6 +58,16 @@ afterEach(() => {
   vi.useRealTimers();
   vi.unstubAllGlobals();
   observerCallback = null;
+  observedElement = null;
+});
+
+// The shim above bypasses real layout, so guard the one thing it can't catch:
+// an element with `display: contents` has no box and never intersects in a
+// real browser, which left every on-view counter stuck at its start value.
+it('observes an element that has a layout box', () => {
+  wrap(<CountUp to={100} />);
+  expect(observedElement).not.toBeNull();
+  expect(getComputedStyle(observedElement!).display).not.toBe('contents');
 });
 
 function triggerIntersection(isIntersecting = true) {

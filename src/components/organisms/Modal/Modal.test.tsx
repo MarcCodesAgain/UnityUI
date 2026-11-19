@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { describe, it, expect, vi } from 'vitest';
 import { theme } from '../../../styles/theme';
-import { Modal, useModal } from './Modal';
+import { Modal } from './Modal';
 
 const wrap = (ui: React.ReactElement) =>
   render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);

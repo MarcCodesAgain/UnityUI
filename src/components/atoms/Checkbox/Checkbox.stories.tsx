@@ -16,7 +16,7 @@ Square checkbox with an animated SVG check-draw on check, and a dash for the ind
 The check path is drawn via a CSS stroke-dashoffset animation — no JS involved.
 
 \`\`\`tsx
-import { Checkbox } from '@unityui/core';
+import { Checkbox } from '@marcllopis/unityui';
 
 const [checked, setChecked] = useState(false);
 
@@ -51,7 +51,7 @@ type Story = StoryObj<typeof Checkbox>;
 
 
 export const Playground: Story = {
-  render: (args) => {
+  render: function Render(args) {
     const [checked, setChecked] = useState(false);
     return (
       <Checkbox
@@ -91,7 +91,7 @@ export const AllStates: Story = {
 
 
 export const Interactive: Story = {
-  render: () => {
+  render: function Render() {
     const [items, setItems] = useState([
       { id: 1, label: 'Design tokens',   checked: true  },
       { id: 2, label: 'Button atom',     checked: true  },
@@ -136,7 +136,7 @@ export const Interactive: Story = {
 
 
 export const ConsentForm: Story = {
-  render: () => {
+  render: function Render() {
     const [agreed, setAgreed] = useState(false);
     const [newsletter, setNewsletter] = useState(false);
 

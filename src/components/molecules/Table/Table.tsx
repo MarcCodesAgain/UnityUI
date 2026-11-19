@@ -1,10 +1,11 @@
 import styled, { css, keyframes } from 'styled-components';
-import { useState, useCallback, useMemo, useId, createContext, useContext } from 'react';
+import { useState, useCallback, useMemo, useId, useEffect, createContext, useContext } from 'react';
 import {
   colors, fontFamily, fontWeight, fontSize,
   letterSpacing, spacing, borderWidth,
 } from '../../../tokens';
 import { Checkbox } from '../../atoms/Checkbox';
+import { isDev } from '../../../utils/isDev';
 
 
 export type SortDirection = 'asc' | 'desc' | null;
@@ -509,13 +510,17 @@ export function DataTable<T extends object>({
   style,
 }: DataTableProps<T>) {
   // ── Dev warning: rowKey is required when selectable to avoid selection desync ──
-  if (process.env.NODE_ENV !== 'production' && selectable && !rowKey && data.length > 0) {
-    console.warn(
-      '[DataTable] `rowKey` is required when `selectable` is true. ' +
-      'Without it, selection state is keyed by index and will desync if data is reordered or updated. ' +
-      'Pass a stable unique key (e.g. rowKey="id").',
-    );
-  }
+  // In an effect so it fires when the misconfiguration appears, not on every render.
+  const missingRowKey = selectable && !rowKey && data.length > 0;
+  useEffect(() => {
+    if (isDev() && missingRowKey) {
+      console.warn(
+        '[DataTable] `rowKey` is required when `selectable` is true. ' +
+        'Without it, selection state is keyed by index and will desync if data is reordered or updated. ' +
+        'Pass a stable unique key (e.g. rowKey="id").',
+      );
+    }
+  }, [missingRowKey]);
 
   // ── Sort state (uncontrolled unless sortKey/onSortChange provided) ──
   const [internalSortKey, setInternalSortKey] = useState<string | null>(null);
@@ -549,24 +554,23 @@ export function DataTable<T extends object>({
   const allSelected  = allIds.length > 0 && allIds.every((id) => selectedIds.has(id));
   const someSelected = !allSelected && allIds.some((id) => selectedIds.has(id));
 
+  // The callback runs outside the state updater on purpose: React may call
+  // updaters twice (always in StrictMode), which would notify the consumer twice.
+  const commitSelection = useCallback((next: Set<string>) => {
+    setSelectedIds(next);
+    onSelectionChange?.(data.filter((row, i) => next.has(getRowId(row, i, rowKey))));
+  }, [data, rowKey, onSelectionChange]);
+
   const toggleAll = useCallback(() => {
-    setSelectedIds(() => {
-      const next = new Set(allSelected ? [] : allIds);
-      const rows = data.filter((_, i) => next.has(getRowId(_, i, rowKey)));
-      onSelectionChange?.(rows);
-      return next;
-    });
-  }, [allSelected, allIds, data, rowKey, onSelectionChange]);
+    commitSelection(new Set(allSelected ? [] : allIds));
+  }, [allSelected, allIds, commitSelection]);
 
   const toggleRow = useCallback((id: string, _row: T) => {
-    setSelectedIds((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      const rows = data.filter((r, i) => next.has(getRowId(r, i, rowKey)));
-      onSelectionChange?.(rows);
-      return next;
-    });
-  }, [data, rowKey, onSelectionChange]);
+    const next = new Set(selectedIds);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    commitSelection(next);
+  }, [selectedIds, commitSelection]);
 
   // ── Client-side sort (only when uncontrolled) ──
   const sortedData = useMemo(() => {

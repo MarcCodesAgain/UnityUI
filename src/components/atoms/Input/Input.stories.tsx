@@ -15,7 +15,7 @@ On focus, an Electric Blue accent line sweeps from center outward along the bott
 The line changes colour to match the current state: blue (default), red (error), green (success).
 
 \`\`\`tsx
-import { Input } from '@unityui/core';
+import { Input } from '@marcllopis/unityui';
 
 <Input
   label="Email"

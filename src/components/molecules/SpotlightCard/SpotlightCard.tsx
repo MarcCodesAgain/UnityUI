@@ -1,5 +1,6 @@
 import React, { useRef, useState, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
+import { isDev } from '../../../utils/isDev';
 import {
   colors, fontFamily, fontWeight, fontSize,
   letterSpacing, spacing, borderWidth,
@@ -37,7 +38,7 @@ function hexToRgba(hex: string, alpha: number): string {
   }
 
   if (!/^#[0-9a-fA-F]{6}$/.test(h)) {
-    if (process.env.NODE_ENV !== 'production') {
+    if (isDev()) {
       console.warn(
         `[SpotlightCard] glowColor="${hex}" is not a valid 6-digit hex colour. ` +
         'Pass a value like "#0047FF". The alpha channel will be ignored.',

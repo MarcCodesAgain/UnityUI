@@ -20,7 +20,7 @@ Respects \`prefers-reduced-motion\` — jumps directly to the final value when t
 reduced motion in their OS settings.
 
 \`\`\`tsx
-import { CountUp, StatCard, StatValue, StatLabel, StatDelta } from '@unityui/core';
+import { CountUp, StatCard, StatValue, StatLabel, StatDelta } from '@marcllopis/unityui';
 
 <StatCard>
   <StatValue>
@@ -101,7 +101,7 @@ export const Default: StoryObj = {
 
 /** Dashboard grid — four stats side by side */
 export const Dashboard: StoryObj = {
-  render: () => {
+  render: function Render() {
     const STATS = [
       { label: 'Components',   value: 34,        suffix: '',   delta: '+6 this sprint', positive: true },
       { label: 'Test coverage',value: 98.7,      suffix: '%',  decimals: 1, delta: '↑ 1.2%', positive: true },
@@ -134,7 +134,7 @@ export const Dashboard: StoryObj = {
 
 /** Live controls — change the target value and watch it animate */
 export const Interactive: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [target, setTarget] = useState(1000);
     const PRESETS = [0, 500, 1_000, 10_000, 99_999, 1_000_000];
 
@@ -216,7 +216,7 @@ export const Formats: StoryObj = {
 
 /** Easing comparison — all three curves at once */
 export const Easings: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [key, setKey] = useState(0);
 
     return (

@@ -17,8 +17,7 @@ export default defineConfig(({ mode }) => {
       react(),
       dts({
         tsconfigPath: './tsconfig.build.json',
-        rollupTypes: true,
-        outDir: 'dist',
+        outDirs: 'dist',
       }),
     ],
     build: {

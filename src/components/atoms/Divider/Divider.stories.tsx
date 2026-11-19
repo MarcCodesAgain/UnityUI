@@ -14,7 +14,7 @@ Semantic separator rendered as \`<hr>\` (horizontal) or \`<div role="separator">
 Supports three visual weights and an optional inline label.
 
 \`\`\`tsx
-import { Divider } from '@unityui/core';
+import { Divider } from '@marcllopis/unityui';
 
 // Horizontal with label
 <Divider label="Or continue with" />

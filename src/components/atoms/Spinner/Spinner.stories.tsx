@@ -15,7 +15,7 @@ Animated loading indicator. Uses a CSS keyframe rotation — no JS overhead at r
 Respects \`prefers-reduced-motion\`: the animation pauses automatically for users who prefer less motion.
 
 \`\`\`tsx
-import { Spinner } from '@unityui/core';
+import { Spinner } from '@marcllopis/unityui';
 
 // Default
 <Spinner size="md" />

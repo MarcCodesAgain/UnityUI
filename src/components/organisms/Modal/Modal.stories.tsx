@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { Modal, useModal } from './Modal';
+import { Modal, useModal } from '.';
 import { Button } from '../../atoms/Button';
 
 const meta: Meta<typeof Modal> = {
@@ -22,7 +22,7 @@ Accessible dialog rendered in a portal at \`document.body\`. Includes:
 Use the \`useModal()\` hook for the open/close state, or manage it yourself.
 
 \`\`\`tsx
-import { Modal, useModal, Button } from '@unityui/core';
+import { Modal, useModal, Button } from '@marcllopis/unityui';
 
 function DeleteDialog() {
   const modal = useModal();
@@ -88,7 +88,7 @@ function Page({ children }: { children: React.ReactNode }) {
 
 export const Default: StoryObj = {
   parameters: { layout: 'fullscreen' },
-  render: () => {
+  render: function Render() {
     const modal = useModal();
     return (
       <Page>
@@ -110,7 +110,7 @@ export const Default: StoryObj = {
 
 export const Sizes: StoryObj = {
   parameters: { layout: 'fullscreen' },
-  render: () => {
+  render: function Render() {
     const [size, setSize] = useState<'sm' | 'md' | 'lg' | 'xl' | null>(null);
     return (
       <Page>
@@ -143,7 +143,7 @@ export const Sizes: StoryObj = {
 
 export const LongContent: StoryObj = {
   parameters: { layout: 'fullscreen' },
-  render: () => {
+  render: function Render() {
     const modal = useModal();
     return (
       <Page>
@@ -170,7 +170,7 @@ export const LongContent: StoryObj = {
 
 export const CustomHeader: StoryObj = {
   parameters: { layout: 'fullscreen' },
-  render: () => {
+  render: function Render() {
     const modal = useModal();
     return (
       <Page>
@@ -204,7 +204,7 @@ export const CustomHeader: StoryObj = {
 
 export const NoBackdropClose: StoryObj = {
   parameters: { layout: 'fullscreen' },
-  render: () => {
+  render: function Render() {
     const modal = useModal();
     return (
       <Page>

@@ -13,7 +13,7 @@ Small label for status, metadata, or categorisation. Uses **JetBrains Mono** in 
 to maintain the technical voice. Add a \`dot\` indicator for live/online states.
 
 \`\`\`tsx
-import { Badge } from '@unityui/core';
+import { Badge } from '@marcllopis/unityui';
 
 <Badge label="Published" variant="primary" dot />
 <Badge label="Draft"     variant="outline" />

@@ -4,13 +4,13 @@
 
 **A Swiss Minimalism design system for React**
 
-[![npm version](https://img.shields.io/npm/v/@unityui/core?style=flat-square&color=0047FF)](https://www.npmjs.com/package/@unityui/core)
-[![npm downloads](https://img.shields.io/npm/dm/@unityui/core?style=flat-square&color=0047FF)](https://www.npmjs.com/package/@unityui/core)
+[![npm version](https://img.shields.io/npm/v/@marcllopis/unityui?style=flat-square&color=0047FF)](https://www.npmjs.com/package/@marcllopis/unityui)
+[![npm downloads](https://img.shields.io/npm/dm/@marcllopis/unityui?style=flat-square&color=0047FF)](https://www.npmjs.com/package/@marcllopis/unityui)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-0047FF?style=flat-square)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-black?style=flat-square)](./LICENSE)
-[![Tests](https://img.shields.io/badge/tests-232%20passing-22C55E?style=flat-square)](#)
+[![CI](https://img.shields.io/github/actions/workflow/status/MarcCodesAgain/UnityUI/ci.yml?branch=main&style=flat-square&label=tests)](https://github.com/MarcCodesAgain/UnityUI/actions/workflows/ci.yml)
 
-Built with React 18, TypeScript, and styled-components. Inspired by the International Typographic Style — sharp edges, precise spacing, no decoration for its own sake.
+Built with React, TypeScript and styled-components. Inspired by the International Typographic Style — sharp edges, precise spacing, no decoration for its own sake.
 
 [**Storybook →**](https://6a3ecef7019c1a5d67a81d71-irgzwxjhri.chromatic.com/) &nbsp;·&nbsp; [Components](#components) &nbsp;·&nbsp; [Tokens](#design-tokens) &nbsp;·&nbsp; [Contributing](#contributing)
 
@@ -33,17 +33,17 @@ UnityUI follows the principles of **Swiss International Style**:
 ## Installation
 
 ```bash
-npm install @unityui/core styled-components
+npm install @marcllopis/unityui styled-components
 ```
 
 UnityUI requires **React ≥ 18** and **styled-components ≥ 6** as peer dependencies.
 
 ```bash
 # yarn
-yarn add @unityui/core styled-components
+yarn add @marcllopis/unityui styled-components
 
 # pnpm
-pnpm add @unityui/core styled-components
+pnpm add @marcllopis/unityui styled-components
 ```
 
 ---
@@ -55,7 +55,7 @@ pnpm add @unityui/core styled-components
 ```tsx
 // main.tsx · _app.tsx · layout.tsx
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, theme } from '@unityui/core';
+import { GlobalStyles, theme } from '@marcllopis/unityui';
 
 export default function App({ children }) {
   return (
@@ -70,7 +70,7 @@ export default function App({ children }) {
 **2. Import and use any component:**
 
 ```tsx
-import { Button, Input, Typography } from '@unityui/core';
+import { Button, Input, Typography } from '@marcllopis/unityui';
 
 export default function Page() {
   return (
@@ -130,7 +130,7 @@ That's it — no additional CSS imports, no font setup required (fonts load via 
 ### Button
 
 ```tsx
-import { Button } from '@unityui/core';
+import { Button } from '@marcllopis/unityui';
 
 // Variants
 <Button variant="primary">Save</Button>
@@ -151,7 +151,7 @@ import { Button } from '@unityui/core';
 ### Input & Select
 
 ```tsx
-import { Input, Select } from '@unityui/core';
+import { Input, Select } from '@marcllopis/unityui';
 
 <Input
   label="Email address"
@@ -185,7 +185,7 @@ import { Input, Select } from '@unityui/core';
 The `<Form>` component accepts a declarative field config and handles validation, loading states, and success messages automatically:
 
 ```tsx
-import { Form, type FormValues } from '@unityui/core';
+import { Form, type FormValues } from '@marcllopis/unityui';
 
 <Form
   title="Create account"
@@ -200,7 +200,7 @@ import { Form, type FormValues } from '@unityui/core';
       name: 'name',
       type: 'input',
       label: 'Full name',
-      placeholder: 'Marc Llopis',
+      placeholder: 'Ada Lovelace',
       required: true,
     },
     {
@@ -236,7 +236,7 @@ import { Form, type FormValues } from '@unityui/core';
 Need a custom layout? Use the exported primitives directly:
 
 ```tsx
-import { FieldWrapper, FieldLabel, FieldHint, FieldRow } from '@unityui/core';
+import { FieldWrapper, FieldLabel, FieldHint, FieldRow } from '@marcllopis/unityui';
 
 // Two-column layout
 <FieldRow>
@@ -254,7 +254,7 @@ import { FieldWrapper, FieldLabel, FieldHint, FieldRow } from '@unityui/core';
 ### Modal
 
 ```tsx
-import { Modal, useModal, Button } from '@unityui/core';
+import { Modal, useModal, Button } from '@marcllopis/unityui';
 
 function DeleteDialog() {
   const modal = useModal();
@@ -287,8 +287,8 @@ Modal sizes: `sm` · `md` (default) · `lg` · `xl`
 ### CommandPalette
 
 ```tsx
-import { CommandPalette, useCommandPalette } from '@unityui/core';
-import type { CommandItem } from '@unityui/core';
+import { CommandPalette, useCommandPalette } from '@marcllopis/unityui';
+import type { CommandItem } from '@marcllopis/unityui';
 
 const COMMANDS: CommandItem[] = [
   {
@@ -330,7 +330,7 @@ function App() {
 ### DataTable
 
 ```tsx
-import { DataTable, type ColumnDef } from '@unityui/core';
+import { DataTable, type ColumnDef } from '@marcllopis/unityui';
 
 interface User {
   id:     string;
@@ -365,7 +365,7 @@ const columns: ColumnDef<User>[] = [
 ### CountUp
 
 ```tsx
-import { CountUp, StatCard, StatValue, StatLabel, StatDelta } from '@unityui/core';
+import { CountUp, StatCard, StatValue, StatLabel, StatDelta } from '@marcllopis/unityui';
 
 // Animates when it enters the viewport
 <StatCard>
@@ -394,7 +394,7 @@ All tokens are exported as typed constants. Import and use them directly in `sty
 ### Colors
 
 ```tsx
-import { colors } from '@unityui/core';
+import { colors } from '@marcllopis/unityui';
 
 // Brand
 colors.primary    // #0047FF  Electric Blue — the single accent
@@ -432,7 +432,7 @@ colors.primary        // #0047FF  (= blue500)
 ### Spacing (4px grid)
 
 ```tsx
-import { spacing } from '@unityui/core';
+import { spacing } from '@marcllopis/unityui';
 
 spacing[1]   // 4px
 spacing[2]   // 8px
@@ -449,7 +449,7 @@ spacing[16]  // 64px
 ### Typography
 
 ```tsx
-import { fontSize, fontWeight, fontFamily, letterSpacing, lineHeight } from '@unityui/core';
+import { fontSize, fontWeight, fontFamily, letterSpacing, lineHeight } from '@marcllopis/unityui';
 
 // Font families
 fontFamily.base   // 'Inter, system-ui, sans-serif'
@@ -480,7 +480,7 @@ fontWeight.black      // 800
 ### Borders
 
 ```tsx
-import { borderWidth } from '@unityui/core';
+import { borderWidth } from '@marcllopis/unityui';
 
 borderWidth[1]   // 1px   — default for inputs, cards, dividers
 borderWidth[2]   // 2px   — focus indicators, active states
@@ -490,7 +490,7 @@ borderWidth[2]   // 2px   — focus indicators, active states
 
 ```tsx
 import styled from 'styled-components';
-import { colors, spacing, fontSize, fontFamily } from '@unityui/core';
+import { colors, spacing, fontSize, fontFamily } from '@marcllopis/unityui';
 
 const Card = styled.div`
   background: ${colors.bgSurface};
@@ -530,8 +530,8 @@ npm run storybook
 ## Contributing & development
 
 ```bash
-git clone https://github.com/marcllopis/unityui
-cd unityui
+git clone https://github.com/MarcCodesAgain/UnityUI
+cd UnityUI
 npm install
 
 npm run dev            # Vite dev server
@@ -569,6 +569,12 @@ src/
 ```bash
 npm run build          # Runs automatically via prepublishOnly
 npm publish --access public
+```
+
+Storybook is published to Chromatic. The project token is read from the environment, never committed:
+
+```bash
+CHROMATIC_PROJECT_TOKEN=<token> npm run chromatic
 ```
 
 | Output file | Format | For |
@@ -634,4 +640,4 @@ Vitest shares Vite's transform pipeline, meaning tests run against the exact sam
 
 ## License
 
-MIT © [Marc Llopis](https://github.com/marcllopis)
+MIT © [Marc Llopis](https://github.com/MarcCodesAgain)

@@ -14,7 +14,7 @@ Native \`<select>\` with a custom chevron, animated accent line on focus, and th
 The chevron rotates 180° on focus via a CSS sibling selector — zero JavaScript.
 
 \`\`\`tsx
-import { Select } from '@unityui/core';
+import { Select } from '@marcllopis/unityui';
 
 <Select
   label="Role"

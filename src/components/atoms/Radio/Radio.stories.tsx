@@ -16,7 +16,7 @@ Circle radio button with a dot-pop spring animation when selected. Use \`Radio\`
 or compose multiple into a \`RadioGroup\` for managed name binding and group-level error state.
 
 \`\`\`tsx
-import { RadioGroup } from '@unityui/core';
+import { RadioGroup } from '@marcllopis/unityui';
 
 <RadioGroup
   name="plan"
@@ -54,7 +54,7 @@ type Story = StoryObj<typeof Radio>;
 
 
 export const Playground: Story = {
-  render: (args) => {
+  render: function Render(args) {
     const [checked, setChecked] = useState(false);
     return (
       <Radio
@@ -93,7 +93,7 @@ export const AllStates: Story = {
 
 
 export const GroupVertical: Story = {
-  render: () => {
+  render: function Render() {
     const [value, setValue] = useState('mid');
     return (
       <RadioGroup
@@ -114,7 +114,7 @@ export const GroupVertical: Story = {
 
 
 export const GroupHorizontal: Story = {
-  render: () => {
+  render: function Render() {
     const [value, setValue] = useState('light');
     return (
       <RadioGroup
@@ -135,7 +135,7 @@ export const GroupHorizontal: Story = {
 
 
 export const GroupWithError: Story = {
-  render: () => {
+  render: function Render() {
     const [value, setValue] = useState('');
     const [submitted, setSubmitted] = useState(false);
 

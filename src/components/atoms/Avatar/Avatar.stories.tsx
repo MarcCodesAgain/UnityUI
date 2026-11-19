@@ -14,7 +14,7 @@ Square avatar (no border-radius) showing initials or an image, with an optional 
 Falls back from image → initials → a generated letter from the \`name\` prop.
 
 \`\`\`tsx
-import { Avatar } from '@unityui/core';
+import { Avatar } from '@marcllopis/unityui';
 
 <Avatar initials="ML" size="md" status="online" />
 <Avatar src="/avatars/jane.jpg" size="lg" />

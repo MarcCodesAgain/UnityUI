@@ -18,7 +18,7 @@ Pass a \`fields\` array and an \`onSubmit\` handler — the form does the rest.
 **Built-in validation:** required fields, email format. Errors appear on submit and clear as the user types.
 
 \`\`\`tsx
-import { Form, type FormValues } from '@unityui/core';
+import { Form, type FormValues } from '@marcllopis/unityui';
 
 <Form
   title="Sign up"

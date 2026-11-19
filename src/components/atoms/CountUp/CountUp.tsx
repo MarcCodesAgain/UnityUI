@@ -247,8 +247,10 @@ export function CountUp({
 
   return (
     // Outer span is the measurement anchor for IntersectionObserver (ref=elRef)
-    // and the layout container. It has no ARIA role of its own.
-    <span ref={elRef} className={className} style={{ display: 'contents', ...style }}>
+    // and the layout container. It has no ARIA role of its own. It must keep a
+    // box: with `display: contents` it measures 0×0, the observer never sees it
+    // intersect, and the number stays at `from` forever.
+    <span ref={elRef} className={className} style={style}>
       {/* Animated number — hidden from AT so intermediate values aren't read out */}
       <NumberEl aria-hidden="true">
         {prefix}{formatted}{suffix}

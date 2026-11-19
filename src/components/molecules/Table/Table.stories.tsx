@@ -17,7 +17,7 @@ Two APIs in one module:
 - **\`DataTable\`** — config-driven API that handles sorting, row selection, custom cell renderers, empty states, and sticky headers out of the box
 
 \`\`\`tsx
-import { DataTable, type ColumnDef } from '@unityui/core';
+import { DataTable, type ColumnDef } from '@marcllopis/unityui';
 
 const columns: ColumnDef<User>[] = [
   { key: 'name',  header: 'Name',  accessor: 'name',  sortable: true },
@@ -124,7 +124,7 @@ export const WithCustomCells: StoryObj = {
 };
 
 export const WithSelection: StoryObj = {
-  render: () => {
+  render: function Render() {
     const [selected, setSelected] = useState<User[]>([]);
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
