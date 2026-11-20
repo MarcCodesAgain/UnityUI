@@ -1,9 +1,11 @@
 import type { Preview, Decorator } from '@storybook/react-vite';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, theme } from '../src/styles';
+import { FontLoader, GlobalStyles, theme } from '../src/styles';
 
 const withTheme: Decorator = (Story) => (
   <ThemeProvider theme={theme}>
+    {/* Inter + JetBrains Mono; without this everything falls back to system/Courier fonts. */}
+    <FontLoader />
     <GlobalStyles />
     <Story />
   </ThemeProvider>

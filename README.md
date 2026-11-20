@@ -50,16 +50,17 @@ pnpm add @marcllopis/unityui styled-components
 
 ## Quick start
 
-**1. Wrap your app** with `ThemeProvider` and add `GlobalStyles` once at the root:
+**1. Wrap your app** with `ThemeProvider` and add `FontLoader` and `GlobalStyles` once at the root:
 
 ```tsx
 // main.tsx · _app.tsx · layout.tsx
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, theme } from '@marcllopis/unityui';
+import { FontLoader, GlobalStyles, theme } from '@marcllopis/unityui';
 
 export default function App({ children }) {
   return (
     <ThemeProvider theme={theme}>
+      <FontLoader />
       <GlobalStyles />
       {children}
     </ThemeProvider>
@@ -83,7 +84,7 @@ export default function Page() {
 }
 ```
 
-That's it — no additional CSS imports, no font setup required (fonts load via `GlobalStyles`).
+That's it — no additional CSS imports. `FontLoader` adds the Inter and JetBrains Mono stylesheets from Google Fonts; if you self-host those fonts, skip it and keep `GlobalStyles`.
 
 ---
 
@@ -640,4 +641,4 @@ Vitest shares Vite's transform pipeline, meaning tests run against the exact sam
 
 ## License
 
-MIT © [Marc Llopis](https://github.com/MarcCodesAgain)
+MIT © [Marc Llopis](https://marcllopis-portfolio.vercel.app)

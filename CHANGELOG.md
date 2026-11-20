@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Docs
+- The quick start said fonts load through `GlobalStyles`; they don't. It now shows `<FontLoader />`, and Storybook loads the fonts too (it was rendering JetBrains Mono as Courier).
+
 ## 1.0.5
 
 ### Fixed

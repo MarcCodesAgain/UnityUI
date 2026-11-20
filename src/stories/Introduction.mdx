@@ -31,11 +31,12 @@ npm install @marcllopis/unityui styled-components
 
 ```tsx
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, theme } from '@marcllopis/unityui';
+import { FontLoader, GlobalStyles, theme } from '@marcllopis/unityui';
 
 export default function App({ children }) {
   return (
     <ThemeProvider theme={theme}>
+      <FontLoader />
       <GlobalStyles />
       {children}
     </ThemeProvider>
